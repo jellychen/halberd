@@ -16,9 +16,12 @@ namespace kernal
         hal_measure_height_assgin   = 0x2,
     };
 
+    class hal_flex;
     class hal_document;
-
     class hal_component : public hal_element {
+    public:
+        friend class hal_flex;
+        
     public:
         hal_component();
         hal_component(std::shared_ptr<hal_document>&);

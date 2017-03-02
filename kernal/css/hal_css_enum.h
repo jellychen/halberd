@@ -20,9 +20,7 @@ namespace kernal
 
     typedef enum {
         hal_css_flex_row                                ,
-        hal_css_flex_row_reverse                        ,
         hal_css_flex_column                             ,
-        hal_css_flex_column_reverse                     ,
         hal_css_flex_direction_auto = hal_css_flex_row  ,
     } hal_css_flex_direction_t;
 

@@ -38,6 +38,9 @@ namespace kernal
 
         // note: flex direction
         hal_css_flex_direction_t flex_direction_ = hal_css_flex_direction_auto;
+
+        // note: flex wrap
+        hal_css_flex_wrap_t flex_wrap_ = hal_css_flex_wrap_auto;
     };
 }
 #endif//Halberd_Kernal_Css_Hal_Css_T_H_
