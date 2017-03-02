@@ -1,0 +1,37 @@
+#include <module/div/hal_html_div.h>
+#include <module/image/hal_html_image.h>
+
+#include "hal_component_creator.h"
+using namespace kernal;
+
+#define __module_class_register(_class)                             \
+function_creator_pool_[_class::k_html_tag_name] =                   \
+    [](std::shared_ptr<hal_document>& doc) {                        \
+        std::shared_ptr<hal_component> _component =                 \
+            hal_creator<hal_html_div>::instance(doc);               \
+        if (_component && _component->init_construct()) {           \
+            return _component;                                      \
+        }                                                           \
+        return std::shared_ptr<hal_component>();                    \
+    }
+
+hal_component_creator::hal_component_creator() {
+    __module_class_register(hal_html_div);
+    __module_class_register(hal_html_image);
+}
+
+hal_component_creator::~hal_component_creator() {
+
+}
+
+std::shared_ptr<hal_component> hal_component_creator::instance
+            (std::shared_ptr<hal_document>& doc, const char* tag) {
+    if (!doc || nullptr == tag) {
+        return std::shared_ptr<hal_component>();
+    }
+    function_creator_pool_t::iterator _it = function_creator_pool_.find(tag);
+    if (function_creator_pool_.end() != _it) {
+        return _it->second(doc);
+    }
+    return std::shared_ptr<hal_component>();
+}
