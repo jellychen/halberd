@@ -36,6 +36,7 @@ bool hal_flex::layout_row_wrap(
 
         // note: absolute element
         if (hal_css_postion_absolute == child_css.position_) {
+            hal_flex::layout_absolute(child, rect);
             ++index; continue;
         }
 

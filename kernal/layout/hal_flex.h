@@ -15,10 +15,14 @@ namespace kernal
         bool measure();
 
     public:
+        // note: layout children
         bool layout(std::shared_ptr<hal_component>&, const hal_rect&);
+
+        // note: layout param component
         bool layout_absolute(std::shared_ptr<hal_component>&, const hal_rect&);
 
     private:
+        // note: layout children
         bool layout_row(std::shared_ptr<hal_component>&, const hal_rect&);
         bool layout_row_wrap(std::shared_ptr<hal_component>&, const hal_rect&);
         bool layout_row_nowrap(std::shared_ptr<hal_component>&, const hal_rect&);

@@ -10,10 +10,11 @@ namespace kernal
     public:
         static const char* k_html_tag_name;
     public:
+        using _parent = hal_component;
         using hal_component::hal_component;
 
     public:
-
+        bool init_construct();
     };
 }
 #endif//Halberd_Kernal_Module_Div_Hal_Html_Div_H_

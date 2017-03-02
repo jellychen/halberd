@@ -4,15 +4,15 @@
 #include "hal_component_creator.h"
 using namespace kernal;
 
-#define __module_class_register(_class)                             \
-function_creator_pool_[_class::k_html_tag_name] =                   \
-    [](std::shared_ptr<hal_document>& doc) {                        \
-        std::shared_ptr<hal_component> _component =                 \
-            hal_creator<hal_html_div>::instance(doc);               \
-        if (_component && _component->init_construct()) {           \
-            return _component;                                      \
-        }                                                           \
-        return std::shared_ptr<hal_component>();                    \
+#define __module_class_register(_class)                                         \
+function_creator_pool_[_class::k_html_tag_name] =                               \
+    [](std::shared_ptr<hal_document>& doc) {                                    \
+        auto _module = hal_creator<_class>::instance(doc);                      \
+        auto _component = std::dynamic_pointer_cast<hal_component>(_module);    \
+        if (_component && _component->init_construct()) {                       \
+            return _component;                                                  \
+        }                                                                       \
+        return std::shared_ptr<hal_component>();                                \
     }
 
 hal_component_creator::hal_component_creator() {
@@ -21,7 +21,6 @@ hal_component_creator::hal_component_creator() {
 }
 
 hal_component_creator::~hal_component_creator() {
-
 }
 
 std::shared_ptr<hal_component> hal_component_creator::instance
