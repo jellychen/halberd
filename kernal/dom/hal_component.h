@@ -4,6 +4,7 @@
 #include <base/hal_inct.h>
 #include <utils/hal_t_define.h>
 #include <event/hal_event.h>
+#include <css/hal_css_t.h>
 
 #include "hal_element.h"
 #include "hal_attributes_dispatch.h"
@@ -48,12 +49,15 @@ namespace kernal
         // note: the ret of parser
         void internal_attr_set_style(const char* str);
 
+    public:
+        std::string doc_id() const;
+
+    protected:
+        hal_css_t css_;
+
     protected:
         std::string doc_id_;
         std::weak_ptr<hal_document> host_document_;
-
-    public:
-        std::string doc_id() const;
     };
 }
 #endif//Halberd_Kernal_Dom_Hal_Component_H_

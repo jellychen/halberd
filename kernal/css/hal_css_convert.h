@@ -8,9 +8,8 @@ namespace kernal
 {
     class hal_css_convert final {
     public:
-
         // note: convert string => int
-        static bool convert(const char*, int*);
+        static bool convert(const char*, int32_t*);
 
         // note: convert string => float
         static bool convert(const char*, float*);
@@ -20,6 +19,9 @@ namespace kernal
 
         // note: convert string => color
         static bool convert(const char*, hal_color*);
+
+        // note: convert string => size
+        static bool convert(const char*, hal_size*);
     };
 }
 #endif//Halberd_Kernal_Css_Hal_Css_Convert_H_

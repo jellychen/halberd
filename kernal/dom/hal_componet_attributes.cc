@@ -14,8 +14,7 @@ bool hal_component::set_attributes(const char* k, const char* val) {
 }
 
 bool hal_component::set_style_attributes(const char* k, const char* val) {
-    printf("[%s] =>  [%s]\n", k, val);
-    return true;
+    return css_.set_attributes(k, val);
 }
 
 void hal_component::internal_attr_set_style(const char* str) {
