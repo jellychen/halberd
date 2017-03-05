@@ -21,7 +21,7 @@ namespace kernal
     class hal_component : public hal_element {
     public:
         friend class hal_flex;
-        
+
     public:
         hal_component();
         hal_component(std::shared_ptr<hal_document>&);

@@ -30,7 +30,7 @@ void hal_render_canvas::capture_to_file(const char* file) {
         if (!_data) {
             break;
         }
-
+        
         SkFILEWStream _out_stream(file);
         _out_stream.write(_data->data(), _data->size());
     } while (0);

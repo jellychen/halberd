@@ -19,7 +19,7 @@ namespace kernal
 
     public:
         std::thread thread_;
-        bool should_exit_ = false;
+        std::atomic_bool should_exit_ = {false};
         hal_thread_runable_queue runable_queue_;
     };
 }

@@ -39,3 +39,10 @@ bool hal_css_convert::convert(const char* str, hal_size* v) {
     }
     return true;
 }
+
+bool hal_css_convert::convert(const char* str, hal_divide* v) {
+    if (nullptr == str || nullptr == v) {
+        return false;
+    }
+    return true;
+}

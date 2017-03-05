@@ -22,6 +22,9 @@ namespace kernal
 
         // note: convert string => size
         static bool convert(const char*, hal_size*);
+
+        // note: convert string => divide
+        static bool convert(const char*, hal_divide*);
     };
 }
 #endif//Halberd_Kernal_Css_Hal_Css_Convert_H_

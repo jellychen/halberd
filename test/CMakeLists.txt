@@ -28,7 +28,10 @@ Link_Directories(
     "${PROJECT_SOURCE_DIR}/../external/skia/out"
 )
 
-Aux_Source_Directory(. srcs)
+Aux_Source_Directory(.          srcs)
+Aux_Source_Directory(./mac      srcs)
+
 Add_Executable(test ${srcs})
 Set(CMAKE_CXX_FLAGS "-fpermissive ${CMAKE_CXX_FLAGS}")
 Target_Link_Libraries(test webkernal)
+Target_Link_Libraries(test "-framework Cocoa")

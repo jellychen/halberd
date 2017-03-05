@@ -18,6 +18,7 @@ hal_thread_instance::~hal_thread_instance() {
     should_exit_ = true;
     runable_queue_.wake_up_thread();
     thread_.join();
+    printf("%s\n", "~hal_thread_instance");
 }
 
 void hal_thread_instance::post(hal_thread_runable& runable) {

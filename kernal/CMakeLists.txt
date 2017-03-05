@@ -50,10 +50,11 @@ Link_Directories(
 
 Add_Compile_Options(-std=c++11)
 Add_Compile_Options(-Wnull-character)
-Set(CMAKE_CXX_FLAGS "-fpermissive ${CMAKE_CXX_FLAGS}")
-Add_Library(webkernal SHARED ${srcs})
+Set(CMAKE_C_FLAGS  "-O2 -pipe -fPIC -Wall -fmessage-length=0 ${CMAKE_CXX_FLAGS}")
+Set(CMAKE_CXX_FLAGS "-O2 -pipe -fPIC -Wall -fmessage-length=0 -fpermissive ${CMAKE_CXX_FLAGS}")
+Add_Library(webkernal STATIC ${srcs})
 
-Target_Link_Libraries(webkernal pthread gumbo skia katana)
+Target_Link_Libraries(webkernal pthread gumbo katana skia)
 Target_Link_Libraries(webkernal "-framework Foundation")
 Target_Link_Libraries(webkernal "-framework CoreGraphics")
 Target_Link_Libraries(webkernal "-framework QuartzCore")
