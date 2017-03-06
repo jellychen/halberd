@@ -3,8 +3,7 @@
 
 #include <base/hal_inct.h>
 
-namespace kernal
-{
+namespace kernal {
     const float k_hal_css_val_nan = std::numeric_limits<float>::max();
     const float k_hal_css_val_max = std::numeric_limits<float>::max() -1;
 

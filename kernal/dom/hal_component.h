@@ -11,8 +11,7 @@
 #include "hal_element.h"
 #include "hal_attributes_dispatch.h"
 
-namespace kernal
-{
+namespace kernal {
     class hal_flex;
     class hal_document;
     class hal_component : public hal_element {

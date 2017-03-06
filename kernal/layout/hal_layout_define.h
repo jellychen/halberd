@@ -3,8 +3,7 @@
 
 #include <base/hal_inct.h>
 
-namespace kernal
-{
-    
+namespace kernal {
+
 }
 #endif//Halberd_Kernal_Layout_Hal_Layout_Define_H_

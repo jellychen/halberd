@@ -4,8 +4,7 @@
 #include <base/hal_inct.h>
 #include <dom/hal_component.h>
 
-namespace kernal
-{
+namespace kernal {
     class hal_html_image final : public hal_component {
     public:
         static const char* k_html_tag_name;

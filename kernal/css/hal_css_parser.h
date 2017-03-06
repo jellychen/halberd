@@ -4,8 +4,7 @@
 #include <base/hal_inct.h>
 #include <dom/hal_component.h>
 
-namespace kernal
-{
+namespace kernal {
     class hal_css_parser final {
     public:
         virtual ~hal_css_parser();

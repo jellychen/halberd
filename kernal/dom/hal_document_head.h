@@ -3,8 +3,7 @@
 
 #include <base/hal_inct.h>
 
-namespace kernal
-{
+namespace kernal {
     class hal_document_head final
         : public std::enable_shared_from_this<hal_document_head> {
     public:

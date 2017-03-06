@@ -7,8 +7,7 @@
 #include "hal_css_enum.h"
 #include "hal_css_define.h"
 
-namespace kernal
-{
+namespace kernal {
     class hal_css_t final {
     public:
         hal_css_t();

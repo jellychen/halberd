@@ -6,8 +6,7 @@
 #include <dom/hal_element.h>
 #include <dom/hal_document.h>
 
-namespace kernal
-{
+namespace kernal {
     class hal_html_creator final {
     public:
         // create element but not whole dom

@@ -22,8 +22,8 @@
 // type
 #include <utils/hal_t_define.h>
 
-namespace kernal
-{
+namespace kernal {
+    
     inline SkRect __convert_to_t(const hal_rect& rect) {
         float x = rect.x_, y = rect.y_;
         float w = rect.width_, h = rect.height_;

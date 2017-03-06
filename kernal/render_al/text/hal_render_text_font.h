@@ -5,8 +5,7 @@
 #include <utils/hal_t_define.h>
 #include <render_al/hal_render_require.h>
 
-namespace kernal
-{
+namespace kernal {
     class hal_render_text_font final {
     public:
         hal_render_text_font();

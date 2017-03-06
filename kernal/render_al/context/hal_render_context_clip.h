@@ -3,8 +3,7 @@
 
 #include "hal_render_context_base.h"
 
-namespace kernal
-{
+namespace kernal {
     class hal_render_context_clip
         : public hal_render_context_base {
     public:

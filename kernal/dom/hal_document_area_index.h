@@ -6,8 +6,7 @@
 
 #include "hal_component.h"
 
-namespace kernal
-{
+namespace kernal {
     class hal_document_area_index final {
     public:
         hal_document_area_index();

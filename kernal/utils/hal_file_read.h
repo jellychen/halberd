@@ -3,8 +3,7 @@
 
 #include <base/hal_inct.h>
 
-namespace kernal
-{
+namespace kernal {
     class hal_file_read final {
     public:
         static bool read_whole(const char* file, std::string& buffer);

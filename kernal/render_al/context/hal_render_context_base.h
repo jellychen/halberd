@@ -6,8 +6,7 @@
 #include <render_al/hal_render_require.h>
 #include <render_al/canvas/hal_render_canvas.h>
 
-namespace kernal
-{
+namespace kernal {
     class hal_render_path;
     class hal_render_texture;
 

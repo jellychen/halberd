@@ -5,8 +5,7 @@
 
 #include "hal_event_define.h"
 
-namespace kernal
-{
+namespace kernal {
     class hal_event
         : public std::enable_shared_from_this<hal_event> {
     public:

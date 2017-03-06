@@ -3,8 +3,7 @@
 
 #include <base/hal_inct.h>
 
-namespace kernal
-{
+namespace kernal {
     enum hal_measure_style {
         hal_measure_width_assgin    = 0x1,
         hal_measure_height_assgin   = 0x2,

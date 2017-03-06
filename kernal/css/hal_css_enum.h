@@ -3,8 +3,7 @@
 
 #include <base/hal_inct.h>
 
-namespace kernal
-{
+namespace kernal {
     typedef enum {
         hal_css_postion_relative                        ,
         hal_css_postion_absolute                        ,

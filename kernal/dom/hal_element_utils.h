@@ -5,8 +5,7 @@
 
 #include "hal_element.h"
 
-namespace kernal
-{
+namespace kernal {
     // note: util function
     // note: use to cast child to t shared_ptr
     template<class t>

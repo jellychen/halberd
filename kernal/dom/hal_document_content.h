@@ -3,8 +3,7 @@
 
 #include <base/hal_inct.h>
 
-namespace kernal
-{
+namespace kernal {
     class hal_component;
 
     class hal_document_content : public hal_component {

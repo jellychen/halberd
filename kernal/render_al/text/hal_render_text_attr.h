@@ -7,8 +7,7 @@
 
 #include "hal_render_text_font.h"
 
-namespace kernal
-{
+namespace kernal {
     class hal_render_text_attr final {
     public:
         hal_render_text_attr();

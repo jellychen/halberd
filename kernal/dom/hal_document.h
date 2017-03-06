@@ -8,8 +8,7 @@
 #include "hal_document_content.h"
 #include "hal_document_area_index.h"
 
-namespace kernal
-{
+namespace kernal {
     class hal_document final
         : public std::enable_shared_from_this<hal_document> {
     public:
@@ -18,7 +17,7 @@ namespace kernal
 
     public:
         hal_document_area_index area_index_;
-        
+
     public:
         std::shared_ptr<hal_document_head> doc_head_;
         std::shared_ptr<hal_document_content> doc_content_;

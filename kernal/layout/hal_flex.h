@@ -4,8 +4,7 @@
 #include <base/hal_inct.h>
 #include <utils/hal_t_define.h>
 
-namespace kernal
-{
+namespace kernal {
     class hal_component;
     class hal_flex {
     public:

@@ -3,8 +3,7 @@
 
 #include <render_al/context/hal_render_context.h>
 
-namespace kernal
-{
+namespace kernal {
     class hal_render_texture {
     public:
         hal_render_texture();

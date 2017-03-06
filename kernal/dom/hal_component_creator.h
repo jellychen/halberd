@@ -7,8 +7,7 @@
 #include "hal_component.h"
 #include "hal_document.h"
 
-namespace kernal
-{
+namespace kernal {
     class hal_component_creator final {
     public:
         hal_component_creator();

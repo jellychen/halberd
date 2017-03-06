@@ -3,8 +3,7 @@
 
 #include <base/hal_inct.h>
 
-namespace kernal
-{
+namespace kernal {
     class hal_element;
     using hal_element_children_t = std::vector<std::shared_ptr<hal_element>>;
     class hal_element: public std::enable_shared_from_this<hal_element> {
