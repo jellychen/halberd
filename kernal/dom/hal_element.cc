@@ -63,7 +63,7 @@ std::shared_ptr<hal_element> hal_element::remove(uint32_t index) {
 }
 
 bool hal_element::remove_from_parent() {
-    if (!parent_.expired()) {
+    if (parent_.expired()) {
         return false;
     }
     auto _rm_element = shared_from_this();
@@ -94,7 +94,7 @@ bool hal_element::remove_child(std::shared_ptr<hal_element>& child) {
 }
 
 bool hal_element::append_child(std::shared_ptr<hal_element>& child) {
-    if (!child || child->parent_.expired()) {
+    if (!child || !(child->parent_.expired())) {
         return false;
     }
 
@@ -107,7 +107,7 @@ bool hal_element::append_child(std::shared_ptr<hal_element>& child) {
 
 bool hal_element::insert_child_at_index(
     uint32_t index, std::shared_ptr<hal_element>& child) {
-    if (!child || child->parent_.expired()) {
+    if (!child || !(child->parent_.expired())) {
         return false;
     }
 

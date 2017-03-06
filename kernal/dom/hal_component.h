@@ -48,6 +48,10 @@ namespace kernal {
         // note: the ret of parser
         void internal_attr_set_style(const char* str);
 
+        // note: this function is called by attributs dispatcher
+        // note: this is call by html attribution 'id'
+        void internal_attr_set_id(const char* str);
+
     public:
         std::string doc_id() const;
 
@@ -71,8 +75,15 @@ namespace kernal {
         hal_css_t css_;
 
     protected:
+        // note: indicate id
         std::string doc_id_;
+
+        // note: indicate sync crash tree
         bool is_sync_area_index_ = false;
+
+        // note: indicate is should layout
+        bool is_need_layout_children = true;
+
         hal_rect_t rect_, document_relative_rect_;
         std::weak_ptr<hal_document> host_document_;
     };

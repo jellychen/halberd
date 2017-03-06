@@ -1,7 +1,7 @@
 #include <module/div/hal_html_div.h>
 #include <module/image/hal_html_image.h>
 #include <module/label/hal_html_label.h>
-
+#include <module/input/hal_html_input.h>
 #include "hal_component_creator.h"
 using namespace kernal;
 
@@ -20,10 +20,11 @@ hal_component_creator::hal_component_creator() {
     __module_class_register(hal_html_div);
     __module_class_register(hal_html_image);
     __module_class_register(hal_html_label);
+    __module_class_register(hal_html_input);
 }
 
 hal_component_creator::~hal_component_creator() {
-    
+
 }
 
 std::shared_ptr<hal_component> hal_component_creator::instance

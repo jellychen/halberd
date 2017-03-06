@@ -12,7 +12,10 @@ hal_component::hal_component(
 }
 
 hal_component::~hal_component() {
-
+    // note: dealloc remove self from id index
+    if (!host_document_.expired() && !doc_id_.empty()) {
+        host_document_.lock()->id_index_.remove(doc_id_);
+    }
 }
 
 bool hal_component::init_construct() {
@@ -32,7 +35,7 @@ hal_rect hal_component::document_relative_rect() const {
 }
 
 bool hal_component::sync_area_index(bool remove) const {
-    if (is_sync_area_index_ ||  host_document_.expired()) {
+    if (is_sync_area_index_ || host_document_.expired()) {
         return false;
     }
     return true;
@@ -47,7 +50,7 @@ bool hal_component::sync_area_index(bool remove) const {
 void hal_component::internal_removed() {
     hal_element::internal_removed();
 
-    if (is_sync_area_index_ || host_document_.expired()) {
+    if (is_sync_area_index_ || !(host_document_.expired())) {
         auto host_document = host_document_.lock();
         std::shared_ptr<hal_component> component
             = std::dynamic_pointer_cast<hal_component>(shared_from_this());

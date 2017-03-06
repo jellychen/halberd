@@ -5,10 +5,11 @@
 
 namespace kernal {
     typedef enum {
+        hal_css_postion_static                          ,
         hal_css_postion_relative                        ,
         hal_css_postion_absolute                        ,
         hal_css_postion_fixed                           ,
-        hal_css_postion_auto = hal_css_postion_relative ,
+        hal_css_postion_auto = hal_css_postion_static   ,
     } hal_css_postion_t;
 
     typedef enum {

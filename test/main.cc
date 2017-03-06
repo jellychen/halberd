@@ -29,24 +29,11 @@ public:
 int main()
 {
 
+    auto doc = hal_creator<hal_document>::instance();
+    hal_html_creator creator;
+    auto ele = creator.build_dom_from_file(doc, "/test/1.html");
 
-    void* _data = new unsigned char[100 * 100 * 4];
-    memset(_data, 255, 100 * 100 * 4);
-    SkBitmap bmp;
-    bmp.setInfo(SkImageInfo::Make(100, 100, kRGBA_8888_SkColorType, kPremul_SkAlphaType));
-    bmp.setPixels(_data);
-
-    printf("%d\n", *(int*)_data);
-        SkCanvas canvas1(bmp);
-       SkPaint paint1;
-        SkRect rect1;
-        rect1.set(0,0,100,100);
-        canvas1.drawRect(rect1,paint1);
-        canvas1.drawLine(0, 0, 100, 100, paint1);
-
-    printf("%d\n", *(int*)_data);
-
-    //_mac_test();
+    printf("%d\n", doc->id_index_.count());
 
     return 0;
 
@@ -63,12 +50,12 @@ int main()
     return 0;
     */
 
-    for (int i = 0; i < 1000; ++i) {
+    for (int i = 0; i < 0; ++i) {
         printf("++ %d\n", i);
         //auto _thread = hal_creator<hal_thread_instance>::instance();
         std::shared_ptr<hal_thread_instance> _t (new hal_thread_instance());
     }
-return 1;
+
 
 printf("%s\n", "1");
 
@@ -93,9 +80,7 @@ printf("%s\n", "1");
 
 
 /*
-    auto doc = hal_creator<hal_document>::instance();
-    hal_html_creator creator;
-    auto ele = creator.build_dom_from_file(doc, "/test/1.html");
+
 */
 
 
