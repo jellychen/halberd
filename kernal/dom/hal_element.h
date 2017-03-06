@@ -21,6 +21,7 @@ namespace kernal
 
     public:
         bool remove_from_parent();
+        bool remove_all_children();
         bool remove_child(std::shared_ptr<hal_element>& child);
         bool append_child(std::shared_ptr<hal_element>& child);
         bool insert_child_at_index(uint32_t, std::shared_ptr<hal_element>&);
@@ -45,7 +46,8 @@ namespace kernal
             std::function<void(std::shared_ptr<hal_element>&)>);
 
     protected:
-
+        virtual void internal_mounted() {}
+        virtual void internal_removed() {}
         virtual void internal_have_child_removed() {}
         virtual void internal_have_child_mounted() {}
 

@@ -2,10 +2,11 @@
 #define Halberd_Kernal_Layout_Hal_Flex_H_
 
 #include <base/hal_inct.h>
-#include <dom/hal_component.h>
+#include <utils/hal_t_define.h>
 
 namespace kernal
 {
+    class hal_component;
     class hal_flex {
     public:
         hal_flex();

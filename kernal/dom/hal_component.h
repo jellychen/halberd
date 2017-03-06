@@ -3,19 +3,16 @@
 
 #include <base/hal_inct.h>
 #include <utils/hal_t_define.h>
-#include <event/hal_event.h>
 #include <css/hal_css_t.h>
+#include <event/hal_event.h>
+#include <layout/hal_layout_define.h>
 
+#include "hal_component_define.h"
 #include "hal_element.h"
 #include "hal_attributes_dispatch.h"
 
 namespace kernal
 {
-    enum hal_measure_style {
-        hal_measure_width_assgin    = 0x1,
-        hal_measure_height_assgin   = 0x2,
-    };
-
     class hal_flex;
     class hal_document;
     class hal_component : public hal_element {
@@ -55,11 +52,29 @@ namespace kernal
     public:
         std::string doc_id() const;
 
+    public:
+        hal_rect rect() const;
+
+        hal_rect document_relative_rect() const;
+
+    protected:
+        // note: this function is use to sync crash tree
+        bool sync_area_index(bool remove) const;
+
+        // note: on removed
+        void internal_removed();
+
+        // note: remove all chidren from crash tree
+        void internal_remove_area_tree_recursive(
+            std::shared_ptr<hal_component>&, std::shared_ptr<hal_document>&);
+
     protected:
         hal_css_t css_;
 
     protected:
         std::string doc_id_;
+        bool is_sync_area_index_ = false;
+        hal_rect_t rect_, document_relative_rect_;
         std::weak_ptr<hal_document> host_document_;
     };
 }

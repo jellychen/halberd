@@ -6,6 +6,7 @@
 #include "hal_component.h"
 #include "hal_document_head.h"
 #include "hal_document_content.h"
+#include "hal_document_area_index.h"
 
 namespace kernal
 {
@@ -16,7 +17,8 @@ namespace kernal
         virtual ~hal_document();
 
     public:
-
+        hal_document_area_index area_index_;
+        
     public:
         std::shared_ptr<hal_document_head> doc_head_;
         std::shared_ptr<hal_document_content> doc_content_;

@@ -54,10 +54,11 @@ std::shared_ptr<hal_element> hal_element::remove(uint32_t index) {
     }
     auto _rm_element = children_[index];
     if (_rm_element) {
+        _rm_element->internal_removed();
         _rm_element->parent_.reset();
-        children_.erase(children_.begin() + index);
-        hal_element::internal_have_child_removed();
     }
+    children_.erase(children_.begin() + index);
+    hal_element::internal_have_child_removed();
     return _rm_element;
 }
 
@@ -67,6 +68,20 @@ bool hal_element::remove_from_parent() {
     }
     auto _rm_element = shared_from_this();
     return parent_.lock()->remove_child(_rm_element);
+}
+
+bool hal_element::remove_all_children() {
+    bool have_child_removed = (bool)children_.size();
+    for (size_t i =0; i < children_.size(); ++i) {
+        if (children_[i]) {
+            children_[i]->internal_removed();
+            children_[i]->parent_.reset();
+        }
+    }
+    if (have_child_removed) {
+        hal_element::internal_have_child_removed();
+    }
+    return true;
 }
 
 bool hal_element::remove_child(std::shared_ptr<hal_element>& child) {
@@ -85,6 +100,7 @@ bool hal_element::append_child(std::shared_ptr<hal_element>& child) {
 
     children_.push_back(child);
     child->parent_ = shared_from_this();
+    child->internal_mounted();
     hal_element::internal_have_child_mounted();
     return true;
 }
@@ -95,12 +111,14 @@ bool hal_element::insert_child_at_index(
         return false;
     }
 
-    child->parent_ = shared_from_this();
     if (index > (uint32_t)(children_.size())) {
         children_.push_back(child);
     } else {
         children_.insert(children_.begin() +index, child);
     }
+
+    child->parent_ = shared_from_this();
+    child->internal_mounted();
     hal_element::internal_have_child_mounted();
     return true;
 }
