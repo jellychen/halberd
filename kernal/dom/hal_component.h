@@ -12,6 +12,7 @@
 #include "hal_attributes_dispatch.h"
 
 namespace kernal {
+    
     class hal_flex;
     class hal_document;
     class hal_component : public hal_element {
@@ -29,6 +30,13 @@ namespace kernal {
     public:
         virtual void layout_children(const hal_rect&, bool);
         virtual hal_size measure_size(const hal_size&, hal_measure_style);
+
+    public:
+        // note: when need relayout call this function
+        void invalidate_layout();
+
+        // note: when need rerender call this function
+        void invalidate_render();
 
     public:
         // note: event stream
@@ -56,18 +64,17 @@ namespace kernal {
         std::string doc_id() const;
 
     public:
+        // note: relative parent
         hal_rect rect() const;
 
+        // note: relative document
         hal_rect document_relative_rect() const;
 
     protected:
-        // note: this function is use to sync crash tree
-        bool sync_area_index(bool remove) const;
-
         // note: on removed
         void internal_removed();
 
-        // note: remove all chidren from crash tree
+        // note: remove all children from crash tree
         void internal_remove_area_tree_recursive(
             std::shared_ptr<hal_component>&, std::shared_ptr<hal_document>&);
 

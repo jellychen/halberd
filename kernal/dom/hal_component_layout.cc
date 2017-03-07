@@ -9,3 +9,8 @@ void hal_component::layout_children(const hal_rect&, bool) {
 hal_size hal_component::measure_size(const hal_size&, hal_measure_style) {
     return hal_size_make(0, 0);
 }
+
+
+void hal_component::invalidate_layout() {
+
+}

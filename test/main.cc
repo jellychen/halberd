@@ -9,6 +9,7 @@ using namespace std;
 
 #include <kernal/render_al/text/hal_render_text_attr.h>
 #include <kernal/thread/hal_thread_instance.h>
+#include <kernal/utils/hal_file_read.h>
 
 #include "mac/mac_test.h"
 
@@ -32,10 +33,13 @@ int main()
     auto doc = hal_creator<hal_document>::instance();
     hal_html_creator creator;
     auto ele = creator.build_dom_from_file(doc, "/test/1.html");
-
     printf("%d\n", doc->id_index_.count());
 
-    return 0;
+
+    std::string utf8_data;
+    hal_file_read::read_whole("/test/1.txt", utf8_data);
+
+    //return 0;
 
 
     /*
@@ -61,21 +65,25 @@ printf("%s\n", "1");
 
 
     std::shared_ptr<hal_render_canvas> canvas
-        = hal_creator<hal_render_canvas>::instance(hal_size_make(1000, 1000));
+        = hal_creator<hal_render_canvas>::instance(hal_size_make(200, 200));
     std::shared_ptr<hal_render_canvas> s = canvas;
     std::shared_ptr<hal_render_context> context
         = hal_creator<hal_render_context>::instance(canvas);
 
-
+    context->erase(hal_color_make(255,255,255,255));
 
 
     context->draw_line(
         hal_point_make(0,0),
-        hal_point_make(50,50), 3, hal_color_make(255,0,0,255), 1);
+        hal_point_make(50,0), 1, hal_color_make(255,0,0,255), 1);
+        //context->draw_round_rect(hal_rect_make(10, 10, 200, 200), 30, 30, 5, hal_color_make(255,0,0,255), 1);
 
 
+    const char* data = "12312果冻odauosduaiosduioa"; uint32_t len = strlen(data);
+    hal_render_text_attr text;
+    text.aa_ = 1; //text.under_line_ = 1; text.strike_line_ = 1;
+    text.draw_multiLine(context, utf8_data.c_str(), utf8_data.size(), hal_rect_make(0,0, 100, 100), 4, hal_point_make(0, 0), hal_color_make(0,0,0,255));
 
-    context->draw_round_rect(hal_rect_make(10, 10, 200, 200), 30, 30, 5, hal_color_make(255,0,0,255), 1);
     context->capture_to_file("1.png");
 
 

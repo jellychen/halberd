@@ -9,11 +9,15 @@
 namespace kernal {
     class hal_render_path;
     class hal_render_texture;
+    class hal_render_text_attr;
 
     class hal_render_context_base {
     public:
         friend class hal_render_path;
         friend class hal_render_texture;
+        friend class hal_render_text_attr;
+
+    public:
         hal_render_context_base(std::shared_ptr<hal_render_canvas>&);
         virtual ~hal_render_context_base();
 

@@ -34,13 +34,6 @@ hal_rect hal_component::document_relative_rect() const {
     return document_relative_rect_;
 }
 
-bool hal_component::sync_area_index(bool remove) const {
-    if (is_sync_area_index_ || host_document_.expired()) {
-        return false;
-    }
-    return true;
-}
-
 // note: when dom node is removed
 // note: if node have sync into crash tree
 // note: the children of node must be remove from crash tree
