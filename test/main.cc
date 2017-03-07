@@ -37,7 +37,7 @@ int main()
 
 
     std::string utf8_data;
-    hal_file_read::read_whole("/test/1.txt", utf8_data);
+    hal_file_read::read_whole("/test/2.txt", utf8_data);
 
     //return 0;
 
@@ -61,7 +61,7 @@ int main()
     }
 
 
-printf("%s\n", "1");
+    printf("%s\n", "1");
 
 
     std::shared_ptr<hal_render_canvas> canvas
@@ -78,11 +78,14 @@ printf("%s\n", "1");
         hal_point_make(50,0), 1, hal_color_make(255,0,0,255), 1);
         //context->draw_round_rect(hal_rect_make(10, 10, 200, 200), 30, 30, 5, hal_color_make(255,0,0,255), 1);
 
-
+    auto _font = std::shared_ptr<hal_render_text_font>(new hal_render_text_font());
     const char* data = "12312果冻odauosduaiosduioa"; uint32_t len = strlen(data);
     hal_render_text_attr text;
-    text.aa_ = 1; //text.under_line_ = 1; text.strike_line_ = 1;
-    text.draw_multiLine(context, utf8_data.c_str(), utf8_data.size(), hal_rect_make(0,0, 100, 100), 4, hal_point_make(0, 0), hal_color_make(0,0,0,255));
+    text.font_ = _font;
+    text.font_->make_bold_italic("STHeiti");
+    text.aa_ = 1; text.text_size_ = 13; //text.under_line_ = 1; text.strike_line_ = 1;
+    text.draw_oneline(context, utf8_data.c_str(), utf8_data.size(), hal_point_make(0, 0), hal_color_make(0,0,0,255));
+    //text.draw_multiLine(context, utf8_data.c_str(), utf8_data.size(), hal_rect_make(0,0, 100, 100), 4, hal_point_make(0, 0), hal_color_make(0,0,0,255));
 
     context->capture_to_file("1.png");
 
