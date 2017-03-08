@@ -3,6 +3,7 @@
 
 #include <base/hal_inct.h>
 #include <dom/hal_component.h>
+#include <render_recoder/hal_render_recoder_inct.h>
 
 namespace kernal {
     class hal_html_image final : public hal_component {
@@ -14,6 +15,12 @@ namespace kernal {
 
     public:
         bool init_construct();
+
+    public:
+        bool set_image_url();
+
+    private:
+        std::shared_ptr<hal_render_command_texture> texture_;
     };
 }
 #endif//Halberd_Kernal_Module_Div_Hal_Html_Div_H_
