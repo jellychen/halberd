@@ -1,12 +1,12 @@
-#include "hal_render_command_context.h"
+#include "hal_render_command_path.h"
 using namespace kernal;
 
-bool hal_render_command_context::save_state() {
-    if (command_buffer_) {
+bool hal_render_command_path::begin_path() {
+    if (_parent::command_buffer_) {
         hal_render_command command = [](
             std::shared_ptr<hal_render_context>& context) {
             if (context) {
-                context->save_state();
+                context->begin_path();
             }
         };
         command_buffer_->commit(command);
@@ -14,12 +14,74 @@ bool hal_render_command_context::save_state() {
     return true;
 }
 
-bool hal_render_command_context::restore_state() {
-    if (command_buffer_) {
+void hal_render_command_path::close_path() {
+    if (_parent::command_buffer_) {
         hal_render_command command = [](
             std::shared_ptr<hal_render_context>& context) {
             if (context) {
-                context->restore_state();
+                context->close_path();
+            }
+        };
+        command_buffer_->commit(command);
+    }
+}
+
+void hal_render_command_path::move_to(const hal_point pt) {
+    if (_parent::command_buffer_) {
+        hal_render_command command = [pt](
+            std::shared_ptr<hal_render_context>& context) {
+            if (context) {
+                context->move_to(pt);
+            }
+        };
+        command_buffer_->commit(command);
+    }
+}
+
+void hal_render_command_path::line_to(const hal_point pt) {
+    if (_parent::command_buffer_) {
+        hal_render_command command = [pt](
+            std::shared_ptr<hal_render_context>& context) {
+            if (context) {
+                context->line_to(pt);
+            }
+        };
+        command_buffer_->commit(command);
+    }
+}
+
+void hal_render_command_path::quad_to(
+    const hal_point pt0, const hal_point pt1) {
+    if (_parent::command_buffer_) {
+        hal_render_command command = [=](
+            std::shared_ptr<hal_render_context>& context) {
+            if (context) {
+                context->quad_to(pt0, pt1);
+            }
+        };
+        command_buffer_->commit(command);
+    }
+}
+
+void hal_render_command_path::cubi_to(
+    const hal_point pt0, const hal_point pt1, const hal_point pt2) {
+    if (_parent::command_buffer_) {
+        hal_render_command command = [=](
+            std::shared_ptr<hal_render_context>& context) {
+            if (context) {
+                context->cubi_to(pt0, pt1, pt2);
+            }
+        };
+        command_buffer_->commit(command);
+    }
+}
+
+bool hal_render_command_path::fill_path(const hal_color clr, bool aa) {
+    if (_parent::command_buffer_) {
+        hal_render_command command = [=](
+            std::shared_ptr<hal_render_context>& context) {
+            if (context) {
+                context->fill_path(clr, aa);
             }
         };
         command_buffer_->commit(command);
@@ -27,12 +89,13 @@ bool hal_render_command_context::restore_state() {
     return true;
 }
 
-bool hal_render_command_context::rotate(float d) {
-    if (command_buffer_) {
+bool hal_render_command_path::stroke_path(
+    const hal_color clr, bool width, bool aa) {
+    if (_parent::command_buffer_) {
         hal_render_command command = [=](
             std::shared_ptr<hal_render_context>& context) {
             if (context) {
-                context->rotate(d);
+                context->stroke_path(clr, width, aa);
             }
         };
         command_buffer_->commit(command);
@@ -40,64 +103,13 @@ bool hal_render_command_context::rotate(float d) {
     return true;
 }
 
-bool hal_render_command_context::skew(float x, float y) {
-    if (command_buffer_) {
+bool hal_render_command_path::stroke_fill_path(
+    const hal_color clr, bool width, bool aa) {
+    if (_parent::command_buffer_) {
         hal_render_command command = [=](
             std::shared_ptr<hal_render_context>& context) {
             if (context) {
-                context->skew(x, y);
-            }
-        };
-        command_buffer_->commit(command);
-    }
-    return true;
-}
-
-bool hal_render_command_context::scale(float x, float y) {
-    if (command_buffer_) {
-        hal_render_command command = [=](
-            std::shared_ptr<hal_render_context>& context) {
-            if (context) {
-                context->scale(x, y);
-            }
-        };
-        command_buffer_->commit(command);
-    }
-    return true;
-}
-
-bool hal_render_command_context::translate(float x, float y) {
-    if (command_buffer_) {
-        hal_render_command command = [=](
-            std::shared_ptr<hal_render_context>& context) {
-            if (context) {
-                context->translate(x, y);
-            }
-        };
-        command_buffer_->commit(command);
-    }
-    return true;
-}
-
-bool hal_render_command_context::camera_rotate(float x, float y, float z) {
-    if (command_buffer_) {
-        hal_render_command command = [=](
-            std::shared_ptr<hal_render_context>& context) {
-            if (context) {
-                context->camera_rotate(x, y, z);
-            }
-        };
-        command_buffer_->commit(command);
-    }
-    return true;
-}
-
-bool hal_render_command_context::camera_translate(float x, float y, float z) {
-    if (command_buffer_) {
-        hal_render_command command = [=](
-            std::shared_ptr<hal_render_context>& context) {
-            if (context) {
-                context->camera_translate(x, y, z);
+                context->stroke_fill_path(clr, width, aa);
             }
         };
         command_buffer_->commit(command);

@@ -31,8 +31,7 @@ namespace kernal {
         bool draw(std::shared_ptr<hal_render_context>& context,
             uint8_t alpha, bool aa, const hal_rect& src, const hal_rect& dest);
 
-
-    protected:
+    public:
         sk_sp<SkImage> texture_;
     };
 }
