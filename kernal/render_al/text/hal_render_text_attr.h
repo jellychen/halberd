@@ -30,17 +30,15 @@ namespace kernal {
 
         // note: draw one line
         bool draw_oneline(std::shared_ptr<hal_render_context>&,
-                const char* text, size_t len, hal_point loc, hal_color clr);
+            const char* text, size_t len, hal_point loc, hal_color clr, uint8_t alpha);
 
         // note: draw multiLine
         bool draw_multiLine(std::shared_ptr<hal_render_context>&,
-                const char* text, size_t len, hal_rect rect, float line_s,
-                hal_point loc, hal_color clr);
+            const char* text, size_t len, hal_rect rect, float line_s,
+            hal_point loc, hal_color clr, uint8_t alpha);
 
     public:
-        bool aa_ = false;
-        float text_size_ = 13;
-        hal_color_t text_color_;
+        bool aa_ = false; float text_size_ = 13;
         bool under_line_ = false, strike_line_ = false;
         std::shared_ptr<hal_render_text_font> font_;
     };

@@ -8,6 +8,7 @@ namespace kernal {
     public:
         hal_render_command_string_t();
         hal_render_command_string_t(const char*);
+        hal_render_command_string_t(const char*, uint32_t);
         hal_render_command_string_t(
             const hal_render_command_string_t&);
 

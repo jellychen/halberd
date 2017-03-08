@@ -94,6 +94,12 @@ int main()
         c_texture->draw(200, true, 0, 0);
 
 
+        auto c_text = hal_creator<hal_render_command_text>::instance(r_buffer);
+        c_text->text_attr_.text_size_ = 30;
+        c_text->text_attr_.aa_ = 1;
+        c_text->draw_oneline("guodong", 7, hal_point_make(10, 10), hal_color_make(0,0,0,255), 255);
+
+
     }
 
 

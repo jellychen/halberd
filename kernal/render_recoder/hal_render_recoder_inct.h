@@ -4,6 +4,7 @@
 #include "hal_render_command_buffer_define.h"
 #include "hal_render_command_string.h"
 #include "hal_render_command_buffer.h"
+#include "hal_render_command_text.h"
 #include "hal_render_command_context.h"
 #include "hal_render_command_texture.h"
 

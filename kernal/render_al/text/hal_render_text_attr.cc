@@ -92,12 +92,13 @@ bool hal_render_text_attr::measure_size(
 
 bool hal_render_text_attr::draw_oneline(
     std::shared_ptr<hal_render_context>& context,
-    const char* text, size_t len, hal_point loc, hal_color clr) {
+    const char* text, size_t len, hal_point loc, hal_color clr, uint8_t alpha) {
     if (!context || nullptr == text || !context->raw_unsafe_canvas()) {
         return false;
     }
 
     SkPaint paint;
+    paint.setAlpha(alpha);
     paint.setAntiAlias(aa_);
     paint.setTextSize(text_size_);
     paint.setTextAlign(SkPaint::kLeft_Align);
@@ -123,12 +124,13 @@ bool hal_render_text_attr::draw_oneline(
 bool hal_render_text_attr::draw_multiLine(
     std::shared_ptr<hal_render_context>& context,
     const char* text, size_t len, hal_rect rect, float line_s,
-    hal_point loc, hal_color clr) {
+    hal_point loc, hal_color clr, uint8_t alpha) {
     if (!context || nullptr == text || !context->raw_unsafe_canvas()) {
         return false;
     }
 
     SkPaint paint;
+    paint.setAlpha(alpha);
     paint.setAntiAlias(aa_);
     paint.setTextSize(text_size_);
     paint.setTextAlign(SkPaint::kLeft_Align);
