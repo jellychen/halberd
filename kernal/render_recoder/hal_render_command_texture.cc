@@ -1,12 +1,11 @@
 #include "hal_render_command_texture.h"
 using namespace kernal;
 
-hal_render_command_texture::hal_render_command_texture() {
-
+hal_render_command_texture::hal_render_command_texture(
+    std::shared_ptr<hal_render_command_buffer>& buffer):command_buffer_(buffer) {
 }
 
 hal_render_command_texture::~hal_render_command_texture() {
-
 }
 
 bool hal_render_command_texture::clear() {
@@ -36,7 +35,7 @@ bool hal_render_command_texture::draw(
         return true;
     }
 
-    if (_parent::command_buffer_) {
+    if (command_buffer_) {
         sk_sp<SkImage> texture = raw_texture_.texture_;
         hal_render_command command = [=](
             std::shared_ptr<hal_render_context>& context) {
@@ -57,7 +56,7 @@ bool hal_render_command_texture::draw(
         return true;
     }
 
-    if (_parent::command_buffer_) {
+    if (command_buffer_) {
         sk_sp<SkImage> texture = raw_texture_.texture_;
         hal_render_command command = [=](
             std::shared_ptr<hal_render_context>& context) {

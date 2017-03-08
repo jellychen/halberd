@@ -45,7 +45,7 @@ namespace kernal {
         bool fill_rect(const hal_rect& rect, const hal_color& clr, bool aa);
         bool fill_round_rect(const hal_rect& rect, float rx, float ry, const hal_color& clr, bool aa);
 
-    protected:
+    public:
         SkCanvas* raw_unsafe_canvas();
 
     protected:

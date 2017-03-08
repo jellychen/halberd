@@ -1,5 +1,5 @@
-#ifndef Halberd_Kernal_Render_Recoder_Hal_Render_Command_Path_H_
-#define Halberd_Kernal_Render_Recoder_Hal_Render_Command_Path_H_
+#ifndef Halberd_Kernal_Render_Recoder_Hal_Render_Command_Texture_H_
+#define Halberd_Kernal_Render_Recoder_Hal_Render_Command_Texture_H_
 
 #include <base/hal_inct.h>
 #include <render_al/context/hal_render_context.h>
@@ -8,9 +8,10 @@
 #include "hal_render_command_draw.h"
 
 namespace kernal {
-    class hal_render_command_texture {
+    class hal_render_command_texture final {
     public:
-        hal_render_command_texture();
+        hal_render_command_texture(
+            std::shared_ptr<hal_render_command_buffer>&);
         virtual ~hal_render_command_texture();
 
     public:
@@ -35,6 +36,7 @@ namespace kernal {
 
     protected:
         hal_render_texture raw_texture_;
+        std::shared_ptr<hal_render_command_buffer> command_buffer_;
     };
 }
-#endif//Halberd_Kernal_Render_Recoder_Hal_Render_Command_Path_H_
+#endif//Halberd_Kernal_Render_Recoder_Hal_Render_Command_Texture_H_

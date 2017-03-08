@@ -20,6 +20,9 @@ namespace kernal {
         // path render close
         void close_path();
 
+        // path render clear
+        void clear_path();
+
         // path render
         void move_to(const hal_point pt);
         void line_to(const hal_point pt);

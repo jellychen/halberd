@@ -26,6 +26,18 @@ void hal_render_command_path::close_path() {
     }
 }
 
+void hal_render_command_path::clear_path() {
+    if (_parent::command_buffer_) {
+        hal_render_command command = [](
+            std::shared_ptr<hal_render_context>& context) {
+            if (context) {
+                context->clear_path();
+            }
+        };
+        command_buffer_->commit(command);
+    }
+}
+
 void hal_render_command_path::move_to(const hal_point pt) {
     if (_parent::command_buffer_) {
         hal_render_command command = [pt](
