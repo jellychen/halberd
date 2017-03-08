@@ -11,11 +11,11 @@ namespace kernal {
         : public std::enable_shared_from_this<hal_render_canvas> {
     public:
         friend class hal_render_context_base;
-        hal_render_canvas(const hal_size size);
+        hal_render_canvas(const hal_size& size);
         virtual ~hal_render_canvas();
 
     public:
-        void resize(const hal_size size);
+        void resize(const hal_size& size);
         void capture_to_file(const char* file);
 
     public:

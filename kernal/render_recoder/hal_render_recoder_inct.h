@@ -1,0 +1,8 @@
+#ifndef Halberd_Kernal_Render_Recoder_Hal_Render_Recoder_Inct_H_
+#define Halberd_Kernal_Render_Recoder_Hal_Render_Recoder_Inct_H_
+
+#include "hal_render_command_buffer_define.h"
+#include "hal_render_command_string.h"
+#include "hal_render_command_buffer.h"
+#include "hal_render_context.h"
+#endif//Halberd_Kernal_Render_Recoder_Hal_Render_Recoder_Inct_H_

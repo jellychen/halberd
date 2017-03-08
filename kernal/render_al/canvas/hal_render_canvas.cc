@@ -1,7 +1,7 @@
 #include "hal_render_canvas.h"
 using namespace kernal;
 
-hal_render_canvas::hal_render_canvas(const hal_size size) {
+hal_render_canvas::hal_render_canvas(const hal_size& size) {
     hal_render_canvas::resize(size);
 }
 
@@ -9,7 +9,7 @@ hal_render_canvas::~hal_render_canvas() {
 
 }
 
-void hal_render_canvas::resize(const hal_size size) {
+void hal_render_canvas::resize(const hal_size& size) {
     surface_ = sk_sp<SkSurface>(
         SkSurface::MakeRasterN32Premul(size.width_, size.height_));
 }
@@ -30,7 +30,7 @@ void hal_render_canvas::capture_to_file(const char* file) {
         if (!_data) {
             break;
         }
-        
+
         SkFILEWStream _out_stream(file);
         _out_stream.write(_data->data(), _data->size());
     } while (0);

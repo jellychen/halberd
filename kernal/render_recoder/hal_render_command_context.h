@@ -45,18 +45,27 @@ namespace kernal {
         bool clip_intersect(const hal_rect rect, bool aa);
 
     public:
+        // state
+        bool save_state();
+        bool restore_state();
         bool rotate(float d);
         bool skew(float x, float y);
         bool scale(float x, float y);
         bool translate(float x, float y);
-
-    public:
         bool camera_rotate(float x, float y, float z);
         bool camera_translate(float x, float y, float z);
 
     public:
-        bool save_state();
-        bool restore_state();
+        // path render
+        bool begin_path();
+        void close_path();
+        void move_to(const hal_point pt);
+        void line_to(const hal_point pt);
+        void quad_to(const hal_point pt0, const hal_point pt1);
+        void cubi_to(const hal_point pt0, const hal_point pt1, const hal_point pt2);
+        bool fill_path(const hal_color clr, bool aa);
+        bool stroke_path(const hal_color clr, bool width, bool aa);
+        bool stroke_fill_path(const hal_color clr, bool width, bool aa);
 
     private:
         std::shared_ptr<hal_render_command_buffer> command_buffer_;

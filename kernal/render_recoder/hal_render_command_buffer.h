@@ -9,17 +9,23 @@
 namespace kernal {
     class hal_render_command_buffer final {
     public:
-        hal_render_command_buffer();
+        hal_render_command_buffer(bool multi_thread);
         virtual ~hal_render_command_buffer();
 
     public:
         void commit(hal_render_command&);
 
     public:
+        // note: run buffer block in the same thread
         void run(std::shared_ptr<hal_render_context>&);
 
+        // note: run buffer block in different thread
+        void run_in_thread(std::shared_ptr<hal_render_context>&);
+
     private:
-        std::queue<hal_render_command> command_queue_;
+        bool is_multi_thread = false;
+        std::queue<hal_render_command> *in_, *out_;
+        std::queue<hal_render_command> command_queue_[2];
     };
 }
 #endif//Halberd_Kernal_Render_Recoder_Hal_Render_Command_Buffer_H_

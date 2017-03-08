@@ -16,7 +16,7 @@ void hal_render_context_base::capture_to_file(const char* file) {
     }
 }
 
-bool hal_render_context_base::erase(const hal_color clr) {
+bool hal_render_context_base::erase(const hal_color& clr) {
     auto canvas = hal_render_context_base::raw_unsafe_canvas();
     if (nullptr == canvas) {
         return false;
@@ -26,8 +26,8 @@ bool hal_render_context_base::erase(const hal_color clr) {
     return true;
 }
 
-bool hal_render_context_base::draw_line(const hal_point pt0,
-    const hal_point pt1, float width, const hal_color clr, bool aa) {
+bool hal_render_context_base::draw_line(const hal_point& pt0,
+    const hal_point& pt1, float width, const hal_color& clr, bool aa) {
     auto canvas = hal_render_context_base::raw_unsafe_canvas();
     if (nullptr == canvas) {
         return false;
@@ -43,7 +43,7 @@ bool hal_render_context_base::draw_line(const hal_point pt0,
 }
 
 bool hal_render_context_base::draw_oval(
-    const hal_rect rect, float width, const hal_color clr, bool aa) {
+    const hal_rect& rect, float width, const hal_color& clr, bool aa) {
     auto canvas = hal_render_context_base::raw_unsafe_canvas();
     if (nullptr == canvas) {
         return false;
@@ -59,7 +59,7 @@ bool hal_render_context_base::draw_oval(
 }
 
 bool hal_render_context_base::draw_rect(
-    const hal_rect rect, float width, const hal_color clr, bool aa) {
+    const hal_rect& rect, float width, const hal_color& clr, bool aa) {
     auto canvas = hal_render_context_base::raw_unsafe_canvas();
     if (nullptr == canvas) {
         return false;
@@ -74,8 +74,8 @@ bool hal_render_context_base::draw_rect(
     return true;
 }
 
-bool hal_render_context_base::draw_round_rect(const hal_rect rect,
-    float rx, float ry, float width, const hal_color clr, bool aa) {
+bool hal_render_context_base::draw_round_rect(const hal_rect& rect,
+    float rx, float ry, float width, const hal_color& clr, bool aa) {
     auto canvas = hal_render_context_base::raw_unsafe_canvas();
     if (nullptr == canvas) {
         return false;
@@ -91,7 +91,7 @@ bool hal_render_context_base::draw_round_rect(const hal_rect rect,
 }
 
 bool hal_render_context_base::fill_oval(
-    const hal_rect rect, const hal_color clr, bool aa) {
+    const hal_rect& rect, const hal_color& clr, bool aa) {
     auto canvas = hal_render_context_base::raw_unsafe_canvas();
     if (nullptr == canvas) {
         return false;
@@ -106,7 +106,7 @@ bool hal_render_context_base::fill_oval(
 }
 
 bool hal_render_context_base::fill_rect(
-    const hal_rect rect, const hal_color clr, bool aa) {
+    const hal_rect& rect, const hal_color& clr, bool aa) {
     auto canvas = hal_render_context_base::raw_unsafe_canvas();
     if (nullptr == canvas) {
         return false;
@@ -121,7 +121,7 @@ bool hal_render_context_base::fill_rect(
 }
 
 bool hal_render_context_base::fill_round_rect(
-    const hal_rect rect, float rx, float ry, const hal_color clr, bool aa) {
+    const hal_rect& rect, float rx, float ry, const hal_color& clr, bool aa) {
     auto canvas = hal_render_context_base::raw_unsafe_canvas();
     if (nullptr == canvas) {
         return false;
