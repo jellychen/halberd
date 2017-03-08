@@ -98,12 +98,11 @@ bool hal_render_text_attr::draw_oneline(
     }
 
     SkPaint paint;
-    paint.setAlpha(alpha);
     paint.setAntiAlias(aa_);
     paint.setTextSize(text_size_);
     paint.setTextAlign(SkPaint::kLeft_Align);
     paint.setTextEncoding(SkPaint::kUTF8_TextEncoding);
-    paint.setARGB(clr.a_, clr.r_, clr.g_, clr.b_);
+    paint.setARGB(clr.a_ * alpha/255., clr.r_, clr.g_, clr.b_);
     if (font_) {
         paint.setTypeface(font_->type_face_);
     }
@@ -130,12 +129,11 @@ bool hal_render_text_attr::draw_multiLine(
     }
 
     SkPaint paint;
-    paint.setAlpha(alpha);
     paint.setAntiAlias(aa_);
     paint.setTextSize(text_size_);
     paint.setTextAlign(SkPaint::kLeft_Align);
     paint.setTextEncoding(SkPaint::kUTF8_TextEncoding);
-    paint.setARGB(clr.a_, clr.r_, clr.g_, clr.b_);
+    paint.setARGB(clr.a_ * alpha/255., clr.r_, clr.g_, clr.b_);
     if (font_) {
         paint.setTypeface(font_->type_face_);
     }
