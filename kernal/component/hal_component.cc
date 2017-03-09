@@ -20,7 +20,8 @@ hal_component::~hal_component() {
 }
 
 bool hal_component::init_construct() {
-    return true;
+    auto component = std::dynamic_pointer_cast<hal_component>(shared_from_this());
+    return flex_layout_.attach_component(component);
 }
 
 std::string hal_component::doc_id() const {

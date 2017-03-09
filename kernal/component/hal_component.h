@@ -5,7 +5,8 @@
 #include "css/hal_css_t.h"
 #include "event/hal_event.h"
 #include "dom/hal_element.h"
-#include "layout/hal_layout_define.h"
+#include "layout/hal_flex.h"
+
 #include "render_recoder/hal_render_recoder_inct.h"
 
 #include "hal_component_define.h"
@@ -88,6 +89,9 @@ namespace kernal {
     protected:
         // note: css style
         hal_css_t css_;
+
+        // note: layouter
+        hal_flex flex_layout_;
 
         // note: indicate id
         std::string doc_id_;
