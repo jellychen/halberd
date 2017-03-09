@@ -33,6 +33,12 @@ namespace kernal {
         bool stroke_path(const hal_color& clr, bool width, bool aa);
         bool stroke_fill_path(const hal_color& clr, bool width, bool aa);
 
+    public:
+        // note: clip path
+        bool clip_path_union(bool aa);
+        bool clip_path_replace(bool aa);
+        bool clip_path_intersect(bool aa);
+
     protected:
         SkPath path_;
     };

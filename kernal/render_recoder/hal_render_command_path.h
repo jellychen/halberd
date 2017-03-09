@@ -30,6 +30,11 @@ namespace kernal {
         bool fill_path(const hal_color clr, bool aa);
         bool stroke_path(const hal_color clr, bool width, bool aa);
         bool stroke_fill_path(const hal_color clr, bool width, bool aa);
+
+        // path clip
+        bool clip_path_union(bool aa);
+        bool clip_path_replace(bool aa);
+        bool clip_path_intersect(bool aa);
     };
 }
 #endif//Halberd_Kernal_Render_Recoder_Hal_Render_Command_Path_H_

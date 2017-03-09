@@ -1,3 +1,5 @@
+#define SK_SUPPORT_EXOTIC_CLIPOPS
+
 #include "hal_render_path.h"
 using namespace kernal;
 
@@ -70,5 +72,32 @@ bool hal_render_path::stroke_fill(
     paint.setStyle(SkPaint::kStrokeAndFill_Style);
     paint.setARGB(clr.a_, clr.r_, clr.g_, clr.b_);
     context->raw_unsafe_canvas()->drawPath(path_, paint);
+    return true;
+}
+
+bool hal_render_path::clip_union(
+    std::shared_ptr<hal_render_context>& context, bool aa) {
+    if (!context || !context->raw_unsafe_canvas()) {
+        return false;
+    }
+    context->raw_unsafe_canvas()->clipPath(path_, SkClipOp::kUnion, aa);
+    return true;
+}
+
+bool hal_render_path::clip_replace(
+    std::shared_ptr<hal_render_context>& context, bool aa) {
+    if (!context || !context->raw_unsafe_canvas()) {
+        return false;
+    }
+    context->raw_unsafe_canvas()->clipPath(path_, SkClipOp::kReplace, aa);
+    return true;
+}
+
+bool hal_render_path::clip_intersect(
+    std::shared_ptr<hal_render_context>& context, bool aa) {
+    if (!context || !context->raw_unsafe_canvas()) {
+        return false;
+    }
+    context->raw_unsafe_canvas()->clipPath(path_, SkClipOp::kIntersect, aa);
     return true;
 }

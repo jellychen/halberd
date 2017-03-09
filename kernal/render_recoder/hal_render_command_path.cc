@@ -128,3 +128,42 @@ bool hal_render_command_path::stroke_fill_path(
     }
     return true;
 }
+
+bool hal_render_command_path::clip_path_union(bool aa) {
+    if (_parent::command_buffer_) {
+        hal_render_command command = [=](
+            std::shared_ptr<hal_render_context>& context) {
+            if (context) {
+                context->clip_path_union(aa);
+            }
+        };
+        command_buffer_->commit(command);
+    }
+    return true;
+}
+
+bool hal_render_command_path::clip_path_replace(bool aa) {
+    if (_parent::command_buffer_) {
+        hal_render_command command = [=](
+            std::shared_ptr<hal_render_context>& context) {
+            if (context) {
+                context->clip_path_replace(aa);
+            }
+        };
+        command_buffer_->commit(command);
+    }
+    return true;
+}
+
+bool hal_render_command_path::clip_path_intersect(bool aa) {
+    if (_parent::command_buffer_) {
+        hal_render_command command = [=](
+            std::shared_ptr<hal_render_context>& context) {
+            if (context) {
+                context->clip_path_intersect(aa);
+            }
+        };
+        command_buffer_->commit(command);
+    }
+    return true;
+}

@@ -28,6 +28,11 @@ namespace kernal {
         bool stroke(std::shared_ptr<hal_render_context>& context, const hal_color& clr, bool width, bool aa);
         bool stroke_fill(std::shared_ptr<hal_render_context>& context, const hal_color& clr, bool width, bool aa);
 
+    public:
+        bool clip_union(std::shared_ptr<hal_render_context>& context, bool aa);
+        bool clip_replace(std::shared_ptr<hal_render_context>& context, bool aa);
+        bool clip_intersect(std::shared_ptr<hal_render_context>& context, bool aa);
+
     private:
         SkPath path_;
     };
