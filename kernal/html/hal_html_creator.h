@@ -4,7 +4,7 @@
 #include <base/hal_inct.h>
 
 #include <dom/hal_element.h>
-#include <dom/hal_document.h>
+#include <component/hal_component.h>
 
 namespace kernal {
     class hal_html_creator final {

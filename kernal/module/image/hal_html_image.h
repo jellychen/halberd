@@ -2,7 +2,7 @@
 #define Halberd_Kernal_Module_Div_Hal_Html_Image_H_
 
 #include <base/hal_inct.h>
-#include <dom/hal_component.h>
+#include <component/hal_component.h>
 #include <render_recoder/hal_render_recoder_inct.h>
 
 namespace kernal {
@@ -17,7 +17,9 @@ namespace kernal {
         bool init_construct();
 
     public:
-        bool set_image_url();
+        bool set_image_url(const char* url);
+
+        bool set_image_buffer(const char* buffer, uint32_t size);
 
     private:
         std::shared_ptr<hal_render_command_texture> texture_;

@@ -3,8 +3,7 @@
 
 #include <base/hal_inct.h>
 #include <external/rtree/r_tree.h>
-
-#include "hal_component.h"
+#include <component/hal_component.h>
 
 namespace kernal {
     class hal_document_area_index final {

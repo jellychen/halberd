@@ -3,7 +3,7 @@
 using namespace std;
 
 #include <kernal/dom/hal_document.h>
-#include <kernal/dom/hal_component_creator.h>
+#include <kernal/component/hal_component_creator.h>
 #include <kernal/html/hal_html_creator.h>
 #include <kernal/render_al/hal_render_inct.h>
 #include <kernal/utils/hal_file_read.h>

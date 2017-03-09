@@ -2,10 +2,10 @@
 #define Halberd_Kernal_Dom_Hal_Component_Creator_H_
 
 #include <base/hal_inct.h>
+#include <dom/hal_element.h>
+#include <dom/hal_document.h>
 
-#include "hal_element.h"
 #include "hal_component.h"
-#include "hal_document.h"
 
 namespace kernal {
     class hal_component_creator final {

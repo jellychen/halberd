@@ -2,7 +2,7 @@
 #define Halberd_Kernal_Module_Div_Hal_Html_Div_H_
 
 #include <base/hal_inct.h>
-#include <dom/hal_component.h>
+#include <component/hal_component.h>
 
 namespace kernal {
     class hal_html_div final : public hal_component {

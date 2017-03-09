@@ -1,4 +1,4 @@
-#include <dom/hal_component.h>
+#include <component/hal_component.h>
 
 #include "hal_flex.h"
 using namespace kernal;

@@ -1,9 +1,8 @@
 #include <gumbo/src/gumbo.h>
 
 #include <utils/hal_file_read.h>
-
-#include <dom/hal_component.h>
-#include <dom/hal_component_creator.h>
+#include <component/hal_component.h>
+#include <component/hal_component_creator.h>
 #include <dom/hal_document_head.h>
 #include <dom/hal_document_content.h>
 

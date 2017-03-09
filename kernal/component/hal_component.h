@@ -6,13 +6,14 @@
 #include <css/hal_css_t.h>
 #include <event/hal_event.h>
 #include <layout/hal_layout_define.h>
+#include <render_recoder/hal_render_recoder_inct.h>
+#include <dom/hal_element.h>
 
 #include "hal_component_define.h"
-#include "hal_element.h"
 #include "hal_attributes_dispatch.h"
 
 namespace kernal {
-    
+
     class hal_flex;
     class hal_document;
     class hal_component : public hal_element {
@@ -28,8 +29,11 @@ namespace kernal {
         virtual bool init_construct();
 
     public:
+        // note: layout measure
+        virtual hal_size measure_size(hal_size&, hal_layout_type);
+
+        // note: layout children
         virtual void layout_children(const hal_rect&, bool);
-        virtual hal_size measure_size(const hal_size&, hal_measure_style);
 
     public:
         // note: when need relayout call this function
@@ -37,6 +41,10 @@ namespace kernal {
 
         // note: when need rerender call this function
         void invalidate_render();
+
+    public:
+        // note: render recoder
+        std::shared_ptr<hal_render_command_buffer> render_command_buffer();
 
     public:
         // note: event stream
@@ -92,6 +100,8 @@ namespace kernal {
         bool is_need_layout_children = true;
 
         hal_rect_t rect_, document_relative_rect_;
+
+        // note: host document
         std::weak_ptr<hal_document> host_document_;
     };
 }

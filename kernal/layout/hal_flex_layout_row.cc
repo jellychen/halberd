@@ -1,4 +1,4 @@
-#include <dom/hal_component.h>
+#include <component/hal_component.h>
 
 #include "hal_flex.h"
 using namespace kernal;
@@ -53,7 +53,15 @@ bool hal_flex::layout_row_wrap(
             current_line_use_width_maybe += child_css.min_size_.width_
                 + child_css.margin_.left_ + child_css.margin_.right_;
         } else {
-
+            float width = 0;
+            if (_is_css_val_valid(child_css.size_.width_)) {
+                width = child_css.clamp_width();
+            } else {
+                hal_size calc_size = hal_size_make(0, 0);
+                calc_size = child ->measure_size(calc_size, hal_layout_no_limited);
+                width = calc_size.width_;
+            }
+            current_line_use_width_maybe += width + child_css.margin_.left_ + child_css.margin_.right_;
         }
     }
     return true;
