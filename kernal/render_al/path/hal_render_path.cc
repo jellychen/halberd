@@ -21,11 +21,13 @@ void hal_render_path::line_to(const hal_point& pt) {
     path_.lineTo(__convert_to_t(pt));
 }
 
-void hal_render_path::quad_to(const hal_point& pt0, const hal_point& pt1) {
+void hal_render_path::quad_to(
+    const hal_point& pt0, const hal_point& pt1) {
     path_.quadTo(pt0.x_, pt0.y_, pt1.x_, pt1.y_);
 }
 
-void hal_render_path::cubi_to(const hal_point& pt0, const hal_point& pt1, const hal_point& pt2) {
+void hal_render_path::cubi_to(
+    const hal_point& pt0, const hal_point& pt1, const hal_point& pt2) {
     path_.cubicTo(pt0.x_, pt0.y_, pt1.x_, pt1.y_, pt2.x_, pt2.y_);
 }
 
@@ -34,7 +36,8 @@ void hal_render_path::close() {
 }
 
 bool hal_render_path::fill(
-    std::shared_ptr<hal_render_context>& context, const hal_color& clr, bool aa) {
+    std::shared_ptr<hal_render_context>& context,
+    const hal_color& clr, bool aa) {
     if (!context || !context->raw_unsafe_canvas()) {
         return false;
     }
@@ -48,7 +51,8 @@ bool hal_render_path::fill(
 }
 
 bool hal_render_path::stroke(
-    std::shared_ptr<hal_render_context>& context, const hal_color& clr, bool width, bool aa) {
+    std::shared_ptr<hal_render_context>& context,
+    const hal_color& clr, bool width, bool aa) {
     if (!context || !context->raw_unsafe_canvas()) {
         return false;
     }
@@ -62,7 +66,8 @@ bool hal_render_path::stroke(
 }
 
 bool hal_render_path::stroke_fill(
-    std::shared_ptr<hal_render_context>& context, const hal_color& clr, bool width, bool aa) {
+    std::shared_ptr<hal_render_context>& context,
+    const hal_color& clr, bool width, bool aa) {
     if (!context || !context->raw_unsafe_canvas()) {
         return false;
     }
