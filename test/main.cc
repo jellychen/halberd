@@ -98,7 +98,7 @@ int main()
         auto c_text = hal_creator<hal_render_command_text>::instance(r_buffer);
         c_text->text_attr_.text_size_ = 30;
         c_text->text_attr_.aa_ = 1;
-        c_text->draw_oneline("guodong", 7, hal_point_make(10, 10), hal_color_make(0,0,0,255), 10);
+        c_text->draw_oneline("guodong", 7, hal_point_make(10, 10), hal_color_make(0,0,0,255), 200);
         c_text->draw_multiLine(utf8_data.c_str(), utf8_data.size(), hal_rect_make(0,0, 100, 100), 4, hal_point_make(0, 0), hal_color_make(0,0,0,255), 255);
     }
 

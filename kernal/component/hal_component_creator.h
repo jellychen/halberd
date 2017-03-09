@@ -1,5 +1,5 @@
-#ifndef Halberd_Kernal_Dom_Hal_Component_Creator_H_
-#define Halberd_Kernal_Dom_Hal_Component_Creator_H_
+#ifndef Halberd_Kernal_Component_Hal_Component_Creator_H_
+#define Halberd_Kernal_Component_Hal_Component_Creator_H_
 
 #include <base/hal_inct.h>
 #include <dom/hal_element.h>
@@ -25,4 +25,4 @@ namespace kernal {
         function_creator_pool_t function_creator_pool_;
     };
 }
-#endif//Halberd_Kernal_Dom_Hal_Component_Creator_H_
+#endif//Halberd_Kernal_Component_Hal_Component_Creator_H_

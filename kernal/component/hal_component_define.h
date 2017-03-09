@@ -1,10 +1,10 @@
-#ifndef Halberd_Kernal_Dom_Hal_Component_Define_H_
-#define Halberd_Kernal_Dom_Hal_Component_Define_H_
+#ifndef Halberd_Kernal_Component_Hal_Component_Define_H_
+#define Halberd_Kernal_Component_Hal_Component_Define_H_
 
 #include <base/hal_inct.h>
 
 namespace kernal {
-    
+
     enum hal_layout_type {
         hal_layout_no_limited           = 0x01,
         hal_layout_assgin_width         = 0x02,
@@ -13,4 +13,4 @@ namespace kernal {
         hal_layout_no_limited_height    = 0x0a,
     };
 }
-#endif//Halberd_Kernal_Dom_Hal_Component_Define_H_
+#endif//Halberd_Kernal_Component_Hal_Component_Define_H_

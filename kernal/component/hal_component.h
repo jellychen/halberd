@@ -1,5 +1,5 @@
-#ifndef Halberd_Kernal_Dom_Hal_Component_H_
-#define Halberd_Kernal_Dom_Hal_Component_H_
+#ifndef Halberd_Kernal_Component_Hal_Component_H_
+#define Halberd_Kernal_Component_Hal_Component_H_
 
 #include <base/hal_inct.h>
 #include <utils/hal_t_define.h>
@@ -105,4 +105,4 @@ namespace kernal {
         std::weak_ptr<hal_document> host_document_;
     };
 }
-#endif//Halberd_Kernal_Dom_Hal_Component_H_
+#endif//Halberd_Kernal_Component_Hal_Component_H_

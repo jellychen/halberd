@@ -1,5 +1,5 @@
-#ifndef Halberd_Kernal_Dom_Hal_Attributes_Dispatch_H_
-#define Halberd_Kernal_Dom_Hal_Attributes_Dispatch_H_
+#ifndef Halberd_Kernal_Component_Hal_Attributes_Dispatch_H_
+#define Halberd_Kernal_Component_Hal_Attributes_Dispatch_H_
 
 #include <base/hal_inct.h>
 
@@ -45,4 +45,4 @@
 #define __hal_attributes_dispatch(_class)                                       \
     hal_attributes_dispatch##_class::share_instance()
 
-#endif//Halberd_Kernal_Dom_Hal_Attributes_Dispatch_H_
+#endif//Halberd_Kernal_Component_Hal_Attributes_Dispatch_H_
