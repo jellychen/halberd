@@ -1,7 +1,7 @@
 #ifndef Halberd_Kernal_Css_Hal_Css_Define_H_
 #define Halberd_Kernal_Css_Hal_Css_Define_H_
 
-#include <base/hal_inct.h>
+#include "base/hal_inct.h"
 
 namespace kernal {
     const float k_hal_css_val_nan = std::numeric_limits<float>::max();

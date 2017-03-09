@@ -1,8 +1,7 @@
 #ifndef Halberd_Kernal_Dom_Hal_Element_Utils_H_
 #define Halberd_Kernal_Dom_Hal_Element_Utils_H_
 
-#include <base/hal_inct.h>
-
+#include "base/hal_inct.h"
 #include "hal_element.h"
 
 namespace kernal {

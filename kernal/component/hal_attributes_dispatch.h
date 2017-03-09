@@ -1,7 +1,7 @@
 #ifndef Halberd_Kernal_Component_Hal_Attributes_Dispatch_H_
 #define Halberd_Kernal_Component_Hal_Attributes_Dispatch_H_
 
-#include <base/hal_inct.h>
+#include "base/hal_inct.h"
 
 #define __hal_attributes_define(_class)                                         \
     class hal_attributes_dispatch##_class final {                               \

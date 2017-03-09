@@ -1,8 +1,7 @@
 #ifndef Halberd_Kernal_Event_Hal_Event_H_
 #define Halberd_Kernal_Event_Hal_Event_H_
 
-#include <base/hal_inct.h>
-
+#include "base/hal_inct.h"
 #include "hal_event_define.h"
 
 namespace kernal {

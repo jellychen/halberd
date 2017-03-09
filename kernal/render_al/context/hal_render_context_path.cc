@@ -1,16 +1,12 @@
 #include "hal_render_context_path.h"
 using namespace kernal;
 
-bool hal_render_context_path::clear_path() {
-    path_.reset(); return true;
+void hal_render_context_path::clear_path() {
+    path_.reset();
 }
 
-bool hal_render_context_path::is_path_empty() {
-    return path_.isEmpty();
-}
-
-bool hal_render_context_path::begin_path() {
-    return path_.isEmpty();
+void hal_render_context_path::begin_path() {
+    path_.reset();
 }
 
 void hal_render_context_path::close_path() {

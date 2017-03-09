@@ -1,5 +1,4 @@
-#include <component/hal_component.h>
-
+#include "component/hal_component.h"
 #include "hal_document_content.h"
 using namespace kernal;
 

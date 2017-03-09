@@ -1,9 +1,9 @@
 #ifndef Halberd_Kernal_Module_Div_Hal_Html_Image_H_
 #define Halberd_Kernal_Module_Div_Hal_Html_Image_H_
 
-#include <base/hal_inct.h>
-#include <component/hal_component.h>
-#include <render_recoder/hal_render_recoder_inct.h>
+#include "base/hal_inct.h"
+#include "component/hal_component.h"
+#include "render_recoder/hal_render_recoder_inct.h"
 
 namespace kernal {
     class hal_html_image final : public hal_component {

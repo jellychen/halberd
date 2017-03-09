@@ -1,10 +1,9 @@
 #ifndef Halberd_Kernal_Component_Hal_Component_Creator_H_
 #define Halberd_Kernal_Component_Hal_Component_Creator_H_
 
-#include <base/hal_inct.h>
-#include <dom/hal_element.h>
-#include <dom/hal_document.h>
-
+#include "base/hal_inct.h"
+#include "dom/hal_element.h"
+#include "dom/hal_document.h"
 #include "hal_component.h"
 
 namespace kernal {

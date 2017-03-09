@@ -1,8 +1,8 @@
 #ifndef Halberd_Kernal_Css_Hal_Css_Parser_H_
 #define Halberd_Kernal_Css_Hal_Css_Parser_H_
 
-#include <base/hal_inct.h>
-#include <component/hal_component.h>
+#include "base/hal_inct.h"
+#include "component/hal_component.h"
 
 namespace kernal {
     class hal_css_parser final {

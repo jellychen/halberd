@@ -1,7 +1,7 @@
 #ifndef Halberd_Kernal_Render_Al_Texture_Hal_Render_Texture_H_
 #define Halberd_Kernal_Render_Al_Texture_Hal_Render_Texture_H_
 
-#include <render_al/context/hal_render_context.h>
+#include "render_al/context/hal_render_context.h"
 
 namespace kernal {
     class hal_render_texture {

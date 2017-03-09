@@ -1,13 +1,12 @@
 #ifndef Halberd_Kernal_Component_Hal_Component_H_
 #define Halberd_Kernal_Component_Hal_Component_H_
 
-#include <base/hal_inct.h>
-#include <utils/hal_t_define.h>
-#include <css/hal_css_t.h>
-#include <event/hal_event.h>
-#include <layout/hal_layout_define.h>
-#include <render_recoder/hal_render_recoder_inct.h>
-#include <dom/hal_element.h>
+#include "base/hal_inct.h"
+#include "css/hal_css_t.h"
+#include "event/hal_event.h"
+#include "dom/hal_element.h"
+#include "layout/hal_layout_define.h"
+#include "render_recoder/hal_render_recoder_inct.h"
 
 #include "hal_component_define.h"
 #include "hal_attributes_dispatch.h"
@@ -87,9 +86,9 @@ namespace kernal {
             std::shared_ptr<hal_component>&, std::shared_ptr<hal_document>&);
 
     protected:
+        // note: css style
         hal_css_t css_;
 
-    protected:
         // note: indicate id
         std::string doc_id_;
 
@@ -99,6 +98,7 @@ namespace kernal {
         // note: indicate is should layout
         bool is_need_layout_children = true;
 
+        // note: indicate position
         hal_rect_t rect_, document_relative_rect_;
 
         // note: host document

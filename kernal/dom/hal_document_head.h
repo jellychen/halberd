@@ -1,7 +1,7 @@
 #ifndef Halberd_Kernal_Dom_Hal_Document_Head_H_
 #define Halberd_Kernal_Dom_Hal_Document_Head_H_
 
-#include <base/hal_inct.h>
+#include "base/hal_inct.h"
 
 namespace kernal {
     class hal_document_head final

@@ -1,8 +1,7 @@
 #ifndef Halberd_Kernal_Thread_Hal_Thread_Instance_H_
 #define Halberd_Kernal_Thread_Hal_Thread_Instance_H_
 
-#include <base/hal_inct.h>
-
+#include "base/hal_inct.h"
 #include "hal_thread_handler.h"
 #include "hal_thread_runable_queue.h"
 

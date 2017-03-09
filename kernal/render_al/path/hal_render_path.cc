@@ -2,19 +2,13 @@
 using namespace kernal;
 
 hal_render_path::hal_render_path() {
-
 }
 
 hal_render_path::~hal_render_path() {
-
 }
 
-bool hal_render_path::clear() {
-    path_.reset(); return true;
-}
-
-bool hal_render_path::is_empty() {
-    return path_.isEmpty();
+void hal_render_path::clear() {
+    path_.reset();
 }
 
 void hal_render_path::move_to(const hal_point& pt) {

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2BDA83FA01A20F1548AF4A8008D555D53D88E6F9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2BDA83FA01A20F1548AF4A8008D555D53D88E6F9" : 9223372036854775807,
+    "E9035F2323ED69E321F81F9D995AEAF1BD485B8D" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "15627DBA-94CF-461F-B84D-FEB8093688C8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2BDA83FA01A20F1548AF4A8008D555D53D88E6F9" : "halberd-git\/",
+    "E9035F2323ED69E321F81F9D995AEAF1BD485B8D" : "halberd-git\/external\/skia\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "halbred",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "build-ios\/halbred\/halbred.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jellychen\/halberd.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2BDA83FA01A20F1548AF4A8008D555D53D88E6F9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/skia.googlesource.com\/skia.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E9035F2323ED69E321F81F9D995AEAF1BD485B8D"
+    }
+  ]
+}

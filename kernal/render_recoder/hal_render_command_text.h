@@ -1,11 +1,10 @@
 #ifndef Halberd_Kernal_Render_Recoder_Hal_Render_Command_Text_H_
 #define Halberd_Kernal_Render_Recoder_Hal_Render_Command_Text_H_
 
-#include <base/hal_inct.h>
-#include <render_al/context/hal_render_context.h>
-#include <render_al/text/hal_render_text_attr.h>
-#include <render_al/text/hal_render_text_font.h>
-
+#include "base/hal_inct.h"
+#include "render_al/context/hal_render_context.h"
+#include "render_al/text/hal_render_text_attr.h"
+#include "render_al/text/hal_render_text_font.h"
 #include "hal_render_command_buffer.h"
 #include "hal_render_command_string.h"
 

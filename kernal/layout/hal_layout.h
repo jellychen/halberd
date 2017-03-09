@@ -1,8 +1,7 @@
 #ifndef Halberd_Kernal_Layout_Hal_Layout_H_
 #define Halberd_Kernal_Layout_Hal_Layout_H_
 
-#include <base/hal_inct.h>
-
+#include "base/hal_inct.h"
 #include "hal_flex.h"
 #include "hal_foundation.h"
 

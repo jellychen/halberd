@@ -1,7 +1,7 @@
 #ifndef Halberd_Kernal_Render_Recoder_Hal_Render_Command_String_H_
 #define Halberd_Kernal_Render_Recoder_Hal_Render_Command_String_H_
 
-#include <base/hal_inct.h>
+#include "base/hal_inct.h"
 
 namespace kernal {
     class hal_render_command_string_t final {

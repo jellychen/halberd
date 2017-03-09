@@ -12,14 +12,11 @@ namespace kernal {
 
     public:
         // note: clear current path
-        bool clear_path();
-
-        // note: is current path empty
-        bool is_path_empty();
+        void clear_path();
 
     public:
         // note: this function will be clear last path
-        bool begin_path();
+        void begin_path();
 
         // note: this function will close current path
         void close_path();

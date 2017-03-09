@@ -1,8 +1,8 @@
 #ifndef Halberd_Kernal_Layout_Hal_Flex_H_
 #define Halberd_Kernal_Layout_Hal_Flex_H_
 
-#include <base/hal_inct.h>
-#include <utils/hal_t_define.h>
+#include "base/hal_inct.h"
+#include "utils/hal_t_define.h"
 
 namespace kernal {
     class hal_component;

@@ -1,7 +1,7 @@
 #ifndef Halberd_Kernal_Css_Hal_Css_Enum_H_
 #define Halberd_Kernal_Css_Hal_Css_Enum_H_
 
-#include <base/hal_inct.h>
+#include "base/hal_inct.h"
 
 namespace kernal {
     typedef enum {

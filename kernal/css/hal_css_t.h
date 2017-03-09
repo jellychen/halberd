@@ -1,8 +1,8 @@
 #ifndef Halberd_Kernal_Css_Hal_Css_T_H_
 #define Halberd_Kernal_Css_Hal_Css_T_H_
 
-#include <base/hal_inct.h>
-#include <utils/hal_t_define.h>
+#include "base/hal_inct.h"
+#include "utils/hal_t_define.h"
 
 #include "hal_css_enum.h"
 #include "hal_css_define.h"
