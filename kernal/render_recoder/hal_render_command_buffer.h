@@ -21,8 +21,15 @@ namespace kernal {
         // note: run buffer block in different thread
         void run_in_thread(std::shared_ptr<hal_render_context>&);
 
+    public:
+        // note: wake up thread
+        void wake_up_thread();
+
     private:
+        bool signal_ = false;
         bool is_multi_thread = false;
+        mutable std::mutex mutex_;
+        std::condition_variable condition_;
         std::queue<hal_render_command> *in_, *out_;
         std::queue<hal_render_command> command_queue_[2];
     };

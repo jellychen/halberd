@@ -7,25 +7,18 @@
 
 namespace kernal {
     class hal_render_context_base;
-    class hal_render_canvas
-        : public std::enable_shared_from_this<hal_render_canvas> {
+    class hal_render_canvas {
     public:
         friend class hal_render_context_base;
-        hal_render_canvas(const hal_size& size);
-        virtual ~hal_render_canvas();
+    public:
+        virtual void resize(const hal_size& size) =0;
+        virtual void capture_to_file(const char* file) =0;
 
     public:
-        void resize(const hal_size& size);
-        void capture_to_file(const char* file);
-
-    public:
-        hal_size size() const;
+        virtual hal_size size() const =0;
 
     private:
-        SkCanvas* raw_unsafe_canvas();
-
-    private:
-        sk_sp<SkSurface> surface_;
+        virtual SkCanvas* raw_unsafe_canvas() =0;
     };
 }
 #endif//Halberd_Kernal_Render_Al_Canvas_Hal_Render_Canvas_H_

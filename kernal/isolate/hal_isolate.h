@@ -22,6 +22,7 @@ namespace kernal {
     private:
         std::shared_ptr<hal_document> document_;
         std::shared_ptr<hal_render_command_buffer> render_command_buffer_;
+        std::shared_ptr<hal_render_raster_thread> render_raster_thread_;
     };
 }
 #endif//Halberd_Kernal_Ioslate_Hal_Ioslate_H_

@@ -63,11 +63,16 @@ int main()
 
 
 
-    std::shared_ptr<hal_render_canvas> canvas
-        = hal_creator<hal_render_canvas>::instance(hal_size_make(400, 400));
-    std::shared_ptr<hal_render_canvas> s = canvas;
+    std::shared_ptr<hal_render_surface_canvas> surface_canvas
+        = hal_creator<hal_render_surface_canvas>::instance(hal_size_make(400, 400));
+    auto base_canvas1 = std::dynamic_pointer_cast<hal_render_canvas>(surface_canvas);
+
+    std::shared_ptr<hal_render_mem_canvas> mem_canvas
+        = hal_creator<hal_render_mem_canvas>::instance(hal_size_make(400, 400));
+    auto base_canvas2 = std::dynamic_pointer_cast<hal_render_canvas>(mem_canvas);
+
     std::shared_ptr<hal_render_context> context
-        = hal_creator<hal_render_context>::instance(canvas);
+        = hal_creator<hal_render_context>::instance(base_canvas2);
 
     context->erase(hal_color_make(255,255,255,255));
 

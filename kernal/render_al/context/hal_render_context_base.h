@@ -5,6 +5,7 @@
 #include "utils/hal_t_define.h"
 #include "render_al/hal_render_require.h"
 #include "render_al/canvas/hal_render_canvas.h"
+#include "render_al/canvas/hal_render_mem_canvas.h"
 
 namespace kernal {
     class hal_render_path;
@@ -18,7 +19,8 @@ namespace kernal {
         friend class hal_render_text_attr;
 
     public:
-        hal_render_context_base(std::shared_ptr<hal_render_canvas>&);
+        hal_render_context_base(
+            std::shared_ptr<hal_render_canvas>&);
         virtual ~hal_render_context_base();
 
     public:
