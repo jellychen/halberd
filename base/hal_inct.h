@@ -18,6 +18,7 @@
 #include <algorithm>
 #include <thread>
 #include <mutex>
+#include <chrono>
 #include <condition_variable>
 
 #include "hal_creator.h"
