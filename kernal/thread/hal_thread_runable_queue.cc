@@ -8,7 +8,8 @@ hal_thread_runable_queue::hal_thread_runable_queue()
 hal_thread_runable_queue::~hal_thread_runable_queue() {
 }
 
-void hal_thread_runable_queue::post(hal_thread_runable& runable) {
+void hal_thread_runable_queue::post(
+    hal_thread_runable& runable) {
     if (!runable) {
         return;
     }

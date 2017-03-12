@@ -18,28 +18,60 @@ using namespace std;
 
 using namespace kernal;
 
+class c {
+public:
+    c(int i ) {
+        printf("%s\n", "c");
+    }
+};
+
+class b{
+public:
+    b() {
+        printf("%s\n", "b");
+    }
+    virtual ~b(){
+        printf("%s\n", "~b");
+    }
+};
 
 class a {
 public:
-    a(){
+    c a__1;
+    b a__;
 
+    a():a__1(1){
+        printf("%s\n", "a");
+    }
+/*
+    a(const a&) {
+        printf("%s\n", "c a");
     }
 
-    void get() {
+    virtual ~a() {
+        printf("%s\n", "~a");
+    }
+
+    void get() const {
         printf("%s\n", "guodong");
     }
+
+    a& operator=(const a&) {
+        printf("%s\n", "a operator=");
+        return *this;
+    }
+
+    a& operator=(const a&&) {
+        printf("%s\n", "a operator==");
+        return *this;
+    }*/
 };
 
 int main()
 {
-    for (int i = 0; i < 0; ++i) {
-        ThreadPool pool(1);
-        printf("%d\n", i);
-    }
-    //return 0;
 
 
-    for (int i = 0; i < 100000000; ++i) {
+    for (int i = 0; i < 1000000000; ++i) {
         printf("%d\n", i);
         auto isolate = hal_creator<hal_isolate>::instance();
         isolate->init();

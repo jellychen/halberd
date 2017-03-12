@@ -3,7 +3,7 @@
 
 #include "base/hal_inct.h"
 #include "hal_isolate_timer.h"
-#include "hal_isolate_handler.h"
+#include "hal_isolate_task_pool.h"
 #include "render_recoder/hal_render_recoder_inct.h"
 
 namespace kernal {
@@ -26,8 +26,8 @@ namespace kernal {
 
     private:
         std::thread thread_;
-        hal_isolate_handler handler_;
         std::atomic_bool should_exit_ = {false};
+        std::shared_ptr<hal_isolate_task_queue> task_queue_;
         std::shared_ptr<hal_render_command_buffer> command_buffer_;
     };
 }

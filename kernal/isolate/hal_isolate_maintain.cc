@@ -4,16 +4,24 @@ using namespace kernal;
 hal_isolate_maintain::hal_isolate_maintain(
     std::shared_ptr<hal_render_command_buffer>& command_buffer)
     : command_buffer_(command_buffer) {
+    // note: task queue
+    task_queue_ = hal_creator<hal_isolate_task_queue>::instance();
+    auto handler = std::dynamic_pointer_cast<hal_isolate_handler>(task_queue_);
+    std::weak_ptr<hal_isolate_handler> weak_handler(handler);
+    hal_singleton<hal_isolate_handler_fetcher>::share().attach(weak_handler);
+
+    // note: create thread;
     thread_ = std::thread([this] {
         this->internal_thread_main();
     });
+
     //std::chrono::milliseconds timespan(50); // or whatever
     //std::this_thread::sleep_for(timespan);
 }
 
 hal_isolate_maintain::~hal_isolate_maintain() {
     should_exit_ = true;
-    handler_.weak_up_thread();
+    task_queue_->weak_up_thread();
     thread_.join();
 }
 
@@ -33,11 +41,11 @@ bool hal_isolate_maintain::load_from_file(const char* name) {
 
 void hal_isolate_maintain::post(
     std::function<void(hal_isolate_maintain*)>& runable) {
-    handler_.post(runable);
+    task_queue_->post(runable);
 }
 
 void hal_isolate_maintain::internal_thread_main() {
     while (false == should_exit_) {
-        handler_.wait_and_run_runable(this);
+        task_queue_->wait_and_run_runable(this);
     }
 }
