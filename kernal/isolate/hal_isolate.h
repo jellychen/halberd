@@ -2,7 +2,7 @@
 #define Halberd_Kernal_Ioslate_Hal_Isolate_H_
 
 #include "base/hal_inct.h"
-#include "dom/hal_document.h"
+#include "hal_isolate_maintain.h"
 #include "render_recoder/hal_render_recoder_inct.h"
 
 namespace kernal {
@@ -15,8 +15,15 @@ namespace kernal {
     public:
         bool init();
 
+    public:
+        // note: load from network
+        bool load_url(const char* url);
+
+        // note: load from file system
+        bool load_from_file(const char* name);
+
     private:
-        std::shared_ptr<hal_document> document_;
+        std::shared_ptr<hal_isolate_maintain> isolate_maintain_;
         std::shared_ptr<hal_render_raster_thread> raster_thread_;
         std::shared_ptr<hal_render_command_buffer> render_command_buffer_;
     };

@@ -17,6 +17,9 @@ namespace kernal
         void post(hal_thread_runable& runable);
 
     public:
+        void internal_thread_main();
+        
+    public:
         std::thread thread_;
         std::atomic_bool should_exit_ = {false};
         hal_thread_runable_queue runable_queue_;

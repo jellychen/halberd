@@ -10,6 +10,9 @@ using namespace std;
 #include <kernal/render_al/text/hal_render_text_attr.h>
 #include <kernal/thread/hal_thread_instance.h>
 #include <kernal/render_recoder/hal_render_recoder_inct.h>
+#include <kernal/isolate/hal_isolate.h>
+
+#include "thread.h"
 
 #include "mac/mac_test.h"
 
@@ -29,8 +32,23 @@ public:
 
 int main()
 {
+    for (int i = 0; i < 0; ++i) {
+        ThreadPool pool(1);
+        printf("%d\n", i);
+    }
+    //return 0;
 
 
+    for (int i = 0; i < 100000000; ++i) {
+        printf("%d\n", i);
+        auto isolate = hal_creator<hal_isolate>::instance();
+        isolate->init();
+    }
+
+    //sleep(5);
+
+    return 0;
+/*
     auto doc = hal_creator<hal_document>::instance();
     hal_html_creator creator;
     auto ele = creator.build_dom_from_file(doc, "/test/1.html");
@@ -38,6 +56,9 @@ int main()
 
     std::string utf8_data;
     hal_file_read::read_whole("/test/2.txt", utf8_data);
+*/
+
+
 
     //return 0;
 
@@ -54,15 +75,15 @@ int main()
     return 0;
     */
 
-    for (int i = 0; i < 0; ++i) {
+    for (int i = 0; i < 1000; ++i) {
         printf("++ %d\n", i);
         //auto _thread = hal_creator<hal_thread_instance>::instance();
         std::shared_ptr<hal_thread_instance> _t (new hal_thread_instance());
     }
 
+    return 0;
 
-
-
+/*
     std::shared_ptr<hal_render_surface_canvas> surface_canvas
         = hal_creator<hal_render_surface_canvas>::instance(hal_size_make(400, 400));
     auto base_canvas1 = std::dynamic_pointer_cast<hal_render_canvas>(surface_canvas);
@@ -110,7 +131,7 @@ int main()
 
     r_buffer->run(context);
 
-
+*/
 
 /*
 
@@ -129,7 +150,7 @@ int main()
     //text.draw_multiLine(context, utf8_data.c_str(), utf8_data.size(), hal_rect_make(0,0, 100, 100), 4, hal_point_make(0, 0), hal_color_make(0,0,0,255));
 */
 
-    context->capture_to_file("1.png");
+    //context->capture_to_file("1.png");
 
 
 /*

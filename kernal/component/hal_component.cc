@@ -8,7 +8,6 @@ hal_component::hal_component() {
 
 hal_component::hal_component(
     std::shared_ptr<hal_document>& doc):host_document_(doc) {
-
 }
 
 hal_component::~hal_component() {

@@ -24,7 +24,7 @@ namespace kernal
 
     private:
         bool signal_ = false;
-        mutable std::mutex mutex_;
+        std::mutex mutex_;
         std::condition_variable condition_;
         std::queue<hal_thread_runable> runable_queue_[2];
         std::queue<hal_thread_runable> *in_ = nullptr, *out_ = nullptr;
