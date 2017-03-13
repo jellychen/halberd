@@ -11,6 +11,7 @@ using namespace std;
 #include <kernal/thread/hal_thread_instance.h>
 #include <kernal/render_recoder/hal_render_recoder_inct.h>
 #include <kernal/isolate/hal_isolate.h>
+#include <kernal/utils/hal_current_time.h>
 
 #include "thread.h"
 
@@ -71,16 +72,6 @@ int main()
 {
 
 
-    for (int i = 0; i < 1000000000; ++i) {
-        printf("%d\n", i);
-        auto isolate = hal_creator<hal_isolate>::instance();
-        isolate->init();
-    }
-
-    //sleep(5);
-
-    return 0;
-/*
     auto doc = hal_creator<hal_document>::instance();
     hal_html_creator creator;
     auto ele = creator.build_dom_from_file(doc, "/test/1.html");
@@ -88,7 +79,7 @@ int main()
 
     std::string utf8_data;
     hal_file_read::read_whole("/test/2.txt", utf8_data);
-*/
+
 
 
 
@@ -106,26 +97,28 @@ int main()
 
     return 0;
     */
-
+/*
     for (int i = 0; i < 1000; ++i) {
         printf("++ %d\n", i);
         //auto _thread = hal_creator<hal_thread_instance>::instance();
         std::shared_ptr<hal_thread_instance> _t (new hal_thread_instance());
     }
+*/
 
-    return 0;
 
-/*
+
     std::shared_ptr<hal_render_surface_canvas> surface_canvas
-        = hal_creator<hal_render_surface_canvas>::instance(hal_size_make(400, 400));
+        = hal_creator<hal_render_surface_canvas>::instance(hal_size_make(1080, 1920));
     auto base_canvas1 = std::dynamic_pointer_cast<hal_render_canvas>(surface_canvas);
 
     std::shared_ptr<hal_render_mem_canvas> mem_canvas
-        = hal_creator<hal_render_mem_canvas>::instance(hal_size_make(400, 400));
+        = hal_creator<hal_render_mem_canvas>::instance(hal_size_make(1080, 1920));
     auto base_canvas2 = std::dynamic_pointer_cast<hal_render_canvas>(mem_canvas);
 
     std::shared_ptr<hal_render_context> context
         = hal_creator<hal_render_context>::instance(base_canvas2);
+
+hal_current_time timer__;
 
     context->erase(hal_color_make(255,255,255,255));
 
@@ -133,6 +126,9 @@ int main()
     auto r_buffer = hal_creator<hal_render_command_buffer>::instance(false);
 
     {
+
+
+
         auto c_context = hal_creator<hal_render_command_context>::instance(r_buffer);
         c_context->draw_round_rect(hal_rect_make(10, 10, 200, 200), 30, 30, 5, hal_color_make(255,0,0,255), 1);
 
@@ -158,12 +154,13 @@ int main()
         c_text->text_attr_.aa_ = 1;
         c_text->draw_oneline("guodong", 7, hal_point_make(10, 10), hal_color_make(0,0,0,255), 200);
         c_text->draw_multiLine(utf8_data.c_str(), utf8_data.size(), hal_rect_make(0,0, 100, 100), 4, hal_point_make(0, 0), hal_color_make(0,0,0,255), 255);
+
     }
 
 
     r_buffer->run(context);
 
-*/
+printf("%lld\n", timer__.elapsed());
 
 /*
 
@@ -182,7 +179,7 @@ int main()
     //text.draw_multiLine(context, utf8_data.c_str(), utf8_data.size(), hal_rect_make(0,0, 100, 100), 4, hal_point_make(0, 0), hal_color_make(0,0,0,255));
 */
 
-    //context->capture_to_file("1.png");
+    context->capture_to_file("1.png");
 
 
 /*

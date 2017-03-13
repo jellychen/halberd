@@ -1,0 +1,4 @@
+#ifndef Halberd_Kernal_Bindings_Hal_Bind_Define_H_
+#define Halberd_Kernal_Bindings_Hal_Bind_Define_H_
+
+#endif//Halberd_Kernal_Bindings_Hal_Bind_Define_H_
