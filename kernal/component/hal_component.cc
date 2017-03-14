@@ -2,38 +2,6 @@
 #include "hal_component.h"
 using namespace kernal;
 
-hal_component::hal_component() {
-
-}
-
-hal_component::hal_component(
-    std::shared_ptr<hal_document>& doc):host_document_(doc) {
-}
-
-hal_component::~hal_component() {
-    // note: dealloc remove self from id index
-    if (!host_document_.expired() && !doc_id_.empty()) {
-        host_document_.lock()->id_index_.remove(doc_id_);
-    }
-}
-
-bool hal_component::init_construct() {
-    auto component = std::dynamic_pointer_cast<hal_component>(shared_from_this());
-    return flex_layout_.attach_component(component);
-}
-
-std::string hal_component::doc_id() const {
-    return doc_id_;
-}
-
-hal_rect hal_component::rect() const {
-    return rect_;
-}
-
-hal_rect hal_component::document_relative_rect() const {
-    return document_relative_rect_;
-}
-
 // note: when dom node is removed
 // note: if node have sync into crash tree
 // note: the children of node must be remove from crash tree
@@ -47,6 +15,7 @@ void hal_component::internal_removed() {
         auto host_document = host_document_.lock();
         std::shared_ptr<hal_component> component
             = std::dynamic_pointer_cast<hal_component>(shared_from_this());
+        /*
         host_document->area_index_.remove(document_relative_rect_, component);
         is_sync_area_index_ = false;
 
@@ -56,6 +25,14 @@ void hal_component::internal_removed() {
                 internal_remove_area_tree_recursive(component, host_document);
             }
         }
+        */
+    }
+}
+
+void hal_component::internal_attr_id_change() {
+    auto component = std::dynamic_pointer_cast<hal_component>(shared_from_this());
+    if (!host_document_.expired() && !doc_id_.empty()) {
+        host_document_.lock()->id_index_.add(doc_id_, component);
     }
 }
 
@@ -64,6 +41,7 @@ void hal_component::internal_removed() {
 void hal_component::internal_remove_area_tree_recursive(
     std::shared_ptr<hal_component>& component, std::shared_ptr<hal_document>& document) {
     if (document && component && component->is_sync_area_index_) {
+        /*
         document->area_index_.remove(component->document_relative_rect_, component);
         component->is_sync_area_index_ = false;
 
@@ -73,5 +51,6 @@ void hal_component::internal_remove_area_tree_recursive(
                 internal_remove_area_tree_recursive(child, document);
             }
         }
+        */
     }
 }

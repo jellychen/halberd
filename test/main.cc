@@ -13,6 +13,8 @@ using namespace std;
 #include <kernal/isolate/hal_isolate.h>
 #include <kernal/utils/hal_current_time.h>
 
+#include <kernal/dom/hal_document_area_index.h>
+
 #include "thread.h"
 
 #include "mac/mac_test.h"
@@ -38,11 +40,10 @@ public:
 
 class a {
 public:
-    c a__1;
-    b a__;
 
-    a():a__1(1){
-        printf("%s\n", "a");
+
+    a(){
+        //printf("%s\n", "a");
     }
 /*
     a(const a&) {
@@ -70,6 +71,22 @@ public:
 
 int main()
 {
+    {
+        hal_current_time timer__;
+
+        std::shared_ptr<hal_component> component(new hal_component());
+        hal_document_area_index index;
+        for (int i = 0; i < 50000000000; ++i) {
+            if (0 == (i % 10000)) {
+                printf("%d\n", i);
+            }
+            hal_rect rect = hal_rect_make(i, i, 20000, 20000);
+            index.add(rect, component);
+        }
+
+        printf("%lld  %d\n", timer__.elapsed(), index.count());
+    }
+    return 0;
 
 
     auto doc = hal_creator<hal_document>::instance();

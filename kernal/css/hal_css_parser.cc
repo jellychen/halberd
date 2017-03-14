@@ -8,12 +8,14 @@ hal_css_parser::~hal_css_parser() {
 }
 
 bool hal_css_parser::declaration_list(
-    const char* buffer, size_t len, std::shared_ptr<hal_component> component) {
+    const char* buffer, size_t len,
+    std::shared_ptr<hal_component_attributes> component) {
     if (nullptr == buffer || 0 == len || !component) {
         return false;
     }
 
-    KatanaOutput* _out = ::katana_parse(buffer, len, KatanaParserModeDeclarationList);
+    KatanaOutput* _out = ::katana_parse(
+        buffer, len, KatanaParserModeDeclarationList);
     if (nullptr == _out) {
         return false;
     }

@@ -31,6 +31,7 @@ namespace kernal {
     } hal_css_flex_wrap_t;
 
     typedef enum {
+        hal_css_flex_none                               ,
         hal_css_flex_start                              ,
         hal_css_flex_end                                ,
         hal_css_center                                  ,

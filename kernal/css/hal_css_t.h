@@ -45,12 +45,24 @@ namespace kernal {
         // note: flex wrap
         hal_css_flex_wrap_t flex_wrap_ = hal_css_flex_wrap_auto;
 
+        // note: flex align self
+        hal_css_flex_align_t flex_align_self = hal_css_flex_none;
+
+        // note: flex
+        hal_css_flex_align_t flex_justify_content = hal_css_flex_align_auto;
+
     public:
         // note: clamp
         float clamp_width() const;
 
         // note: clamp
         float clamp_height() const;
+
+        // note: clamp value
+        float clamp_width(float width) const;
+
+        // note: clamp value
+        float clamp_height(float height) const;
     };
 }
 #endif//Halberd_Kernal_Css_Hal_Css_T_H_

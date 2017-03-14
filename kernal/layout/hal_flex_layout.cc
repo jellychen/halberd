@@ -5,11 +5,13 @@ using namespace kernal;
 bool hal_flex::layout(const hal_rect& rect) {
     if (!host_component_.expired()) {
         auto component = host_component_.lock();
+        measure_cache_.resize(component->children_count());
         if (hal_css_flex_row == component->css_.flex_direction_) {
             return hal_flex::layout_row(component, rect);
         } else if (hal_css_flex_column == component->css_.flex_direction_) {
             return hal_flex::layout_cloumn(component, rect);
         }
+        measure_cache_.clear();
     }
     return false;
 }

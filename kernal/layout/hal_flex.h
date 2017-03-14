@@ -32,10 +32,15 @@ namespace kernal {
         bool layout_cloumn(std::shared_ptr<hal_component>&, const hal_rect&);
         bool layout_cloumn_wrap(std::shared_ptr<hal_component>&, const hal_rect&);
         bool layout_cloumn_nowrap(std::shared_ptr<hal_component>&, const hal_rect&);
+
+        // note: layout absolute
         bool layout_absolute(std::shared_ptr<hal_component>&, const hal_rect&);
 
     private:
         std::weak_ptr<hal_component> host_component_;
+
+    protected:
+        std::vector<hal_flex_layout_size> measure_cache_;
     };
 }
 #endif//Halberd_Kernal_Layout_Hal_Flex_H_
