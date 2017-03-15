@@ -13,9 +13,6 @@ namespace kernal {
         // note: override removed
         void internal_removed() override;
 
-        // note: override id change
-        void internal_attr_id_change() override;
-
     private:
         void internal_remove_area_tree_recursive(
             std::shared_ptr<hal_component>&,

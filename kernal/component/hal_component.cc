@@ -29,13 +29,6 @@ void hal_component::internal_removed() {
     }
 }
 
-void hal_component::internal_attr_id_change() {
-    auto component = std::dynamic_pointer_cast<hal_component>(shared_from_this());
-    if (!host_document_.expired() && !doc_id_.empty()) {
-        host_document_.lock()->id_index_.add(doc_id_, component);
-    }
-}
-
 // note: recursive remove all children
 // note: this function is use to reduce dynamic_cast
 void hal_component::internal_remove_area_tree_recursive(

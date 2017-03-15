@@ -3,6 +3,8 @@
 using namespace kernal;
 
 bool hal_component_layout::init_construct() {
+    flex_layout_.attach_component(
+        std::dynamic_pointer_cast<hal_component_layout>(shared_from_this()));
     return true;
 }
 
@@ -25,5 +27,9 @@ hal_rect hal_component_layout::document_relative_rect() const {
 }
 
 void hal_component_layout::invalidate_layout() {
+
+}
+
+void hal_component_layout::internal_set_layouted() {
 
 }

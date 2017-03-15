@@ -8,7 +8,7 @@ namespace kernal {
     class hal_document_id_index final {
     public:
         // note: add id in index pool
-        bool add(std::string&, std::shared_ptr<hal_component>&);
+        bool add(std::string&, std::shared_ptr<hal_component_base>&);
 
         // note: remove id from index pool
         bool remove(std::string&);
@@ -20,7 +20,7 @@ namespace kernal {
         std::shared_ptr<hal_component> find(std::string&);
 
     private:
-        using id_index_t = std::map<std::string, std::weak_ptr<hal_component>>;
+        using id_index_t = std::map<std::string, std::weak_ptr<hal_component_base>>;
 
     private:
         id_index_t id_index_pool_;

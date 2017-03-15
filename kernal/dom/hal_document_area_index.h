@@ -13,10 +13,10 @@ namespace kernal {
 
     public:
         // note: add rect area into rtree
-        bool add(const hal_rect&, std::shared_ptr<hal_component>&);
+        bool add(const hal_rect&, std::shared_ptr<hal_component_base>&);
 
         // note: remove rect area into rtree
-        bool remove(const hal_rect&, std::shared_ptr<hal_component>&);
+        bool remove(const hal_rect&, std::shared_ptr<hal_component_base>&);
 
         // note: remove all
         bool remove_all();
@@ -25,7 +25,7 @@ namespace kernal {
         uint32_t count();
 
     private:
-        RTree<std::shared_ptr<hal_component>, float, 2> area_tree_;
+        RTree<std::shared_ptr<hal_component_base>, float, 2> area_tree_;
     };
 }
 #endif//Halberd_Kernal_Dom_Hal_Document_Area_Index_H_

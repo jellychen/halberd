@@ -10,7 +10,7 @@ hal_document_area_index::~hal_document_area_index() {
 }
 
 bool hal_document_area_index::add(
-    const hal_rect& rect, std::shared_ptr<hal_component>& component) {
+    const hal_rect& rect, std::shared_ptr<hal_component_base>& component) {
     if (component) {
         float cood_min[2] = {rect.x_, rect.y_};
         float cood_max[2] = {rect.x_ + rect.width_, rect.y_ + rect.height_};
@@ -21,7 +21,7 @@ bool hal_document_area_index::add(
 }
 
 bool hal_document_area_index::remove(
-    const hal_rect& rect, std::shared_ptr<hal_component>& component) {
+    const hal_rect& rect, std::shared_ptr<hal_component_base>& component) {
     if (component) {
         float cood_min[2] = {rect.x_, rect.y_};
         float cood_max[2] = {rect.x_ + rect.width_, rect.y_ + rect.height_};

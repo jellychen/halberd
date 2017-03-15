@@ -17,7 +17,7 @@ bool hal_flex::layout(const hal_rect& rect) {
 }
 
 bool hal_flex::layout_row(
-    std::shared_ptr<hal_component>& component, const hal_rect& rect) {
+    std::shared_ptr<hal_component_layout>& component, const hal_rect& rect) {
     if (component) {
         if (hal_css_flex_wrap == component->css_.flex_wrap_) {
             return hal_flex::layout_row(component, rect);
@@ -29,7 +29,7 @@ bool hal_flex::layout_row(
 }
 
 bool hal_flex::layout_cloumn(
-    std::shared_ptr<hal_component>& component, const hal_rect& rect) {
+    std::shared_ptr<hal_component_layout>& component, const hal_rect& rect) {
     if (component) {
         if (hal_css_flex_wrap == component->css_.flex_wrap_) {
             return hal_flex::layout_row(component, rect);

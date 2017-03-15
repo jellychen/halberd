@@ -3,7 +3,6 @@
 
 #include "base/hal_inct.h"
 #include "utils/hal_t_define.h"
-
 #include "hal_css_enum.h"
 #include "hal_css_define.h"
 

@@ -2,11 +2,11 @@
 using namespace kernal;
 
 bool hal_document_id_index::add(
-    std::string& _id, std::shared_ptr<hal_component>& component) {
+    std::string& _id, std::shared_ptr<hal_component_base>& component) {
     if (_id.empty() || !component) {
         return false;
     }
-    std::weak_ptr<hal_component> w_component = component;
+    std::weak_ptr<hal_component_base> w_component = component;
     id_index_pool_[_id] = w_component;
     return true;
 }
@@ -22,7 +22,7 @@ bool hal_document_id_index::remove(std::string& _id) {
 std::shared_ptr<hal_component> hal_document_id_index::find(std::string& _id) {
     auto iter = id_index_pool_.find(_id);
     if (id_index_pool_.end() != iter) {
-        return iter->second.lock();
+        return std::dynamic_pointer_cast<hal_component>(iter->second.lock());
     }
     return std::shared_ptr<hal_component>();
 }

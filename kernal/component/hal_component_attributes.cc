@@ -35,9 +35,10 @@ void hal_component_attributes::internal_attr_set_id(const char* str) {
     if (!host_document_.expired() && !doc_id_.empty()) {
         host_document_.lock()->id_index_.remove(doc_id_);
     }
-    doc_id_ = str; internal_attr_id_change();
-}
-
-void hal_component_attributes::internal_attr_id_change() {
-    // ...
+    doc_id_ = str;
+    
+    auto component = std::dynamic_pointer_cast<hal_component_base>(shared_from_this());
+    if (!host_document_.expired() && !doc_id_.empty()) {
+        host_document_.lock()->id_index_.add(doc_id_, component);
+    }
 }

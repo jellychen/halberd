@@ -30,10 +30,6 @@ namespace kernal {
         void internal_attr_set_id(const char* str);
 
     protected:
-        // note: when id change
-        virtual void internal_attr_id_change();
-
-    protected:
         // note: css style
         hal_css_t css_;
     };

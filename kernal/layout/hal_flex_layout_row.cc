@@ -3,7 +3,7 @@
 using namespace kernal;
 
 bool hal_flex::layout_row_wrap(
-    std::shared_ptr<hal_component>& component, const hal_rect& rect) {
+    std::shared_ptr<hal_component_layout>& component, const hal_rect& rect) {
 
     hal_css_t& css = component->css_;
     float avaliable_width = rect.width_ - css.border_.left_
@@ -25,7 +25,7 @@ bool hal_flex::layout_row_wrap(
     float current_line_top = css.padding_.top_ + css.border_.top_;
 
     for (uint32_t index =0; index < component->children_count();) {
-        auto child = std::dynamic_pointer_cast<hal_component>(component->at(index));
+        auto child = std::dynamic_pointer_cast<hal_component_layout>(component->at(index));
         if (!child) {
             ++index; continue;
         }
@@ -146,7 +146,7 @@ bool hal_flex::layout_row_wrap(
             // note: layout one line
             uint32_t last_index = current_line_start_index + current_line_elements_count;
             for (uint32_t i = current_line_start_index; i < last_index; ++i) {
-                auto child = std::dynamic_pointer_cast<hal_component>(component->at(i));
+                auto child = std::dynamic_pointer_cast<hal_component_layout>(component->at(i));
                 if (child) {
                     hal_css_t& child_css = child->css_;
                     if (hal_css_display_none == child_css.display_) {

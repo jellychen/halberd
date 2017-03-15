@@ -14,9 +14,19 @@ namespace kernal {
         // note: render recoder
         std::shared_ptr<hal_render_command_buffer> render_command_buffer();
 
+    public:
+        // note: called
+        void render(std::shared_ptr<hal_render_command_context>&);
+
     protected:
+        // note: render function
+        virtual void paint(std::shared_ptr<hal_render_command_context>&);
+
         // note: when need rerender call this function
-        void invalidate_render();
+        virtual void invalidate_render();
+
+    protected:
+        bool is_need_render = true;
     };
 }
 #endif//Halberd_Kernal_Component_Hal_Component_Render_H_

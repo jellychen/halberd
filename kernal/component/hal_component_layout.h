@@ -32,9 +32,15 @@ namespace kernal {
         // note: when need relayout call this function
         void invalidate_layout();
 
+        // note: when layout position
+        void internal_set_layouted();
+
     protected:
         // note: layouter
         hal_flex flex_layout_;
+
+        // note: is sync area index
+        bool is_sync_area_index_ = false;
     };
 }
 #endif//Halberd_Kernal_Component_Hal_Component_Layout_H_

@@ -24,6 +24,7 @@ std::string hal_component_base::doc_id() const {
     return doc_id_;
 }
 
+/*
 // note: on removed
 void hal_component_base::internal_removed() {
 
@@ -35,3 +36,4 @@ void internal_remove_area_tree_recursive(
     std::shared_ptr<hal_component_base>&) {
 
 }
+*/
