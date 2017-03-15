@@ -2,7 +2,9 @@
 #include "component/hal_component.h"
 using namespace kernal;
 
-bool hal_flex::layout(const hal_rect& rect) {
+bool hal_flex::layout(
+    const hal_rect& rect, const hal_point& pt, const hal_rect& vrect) {
+    document_relative_point_ = pt; current_visible_rect = vrect;
     if (!host_component_.expired()) {
         auto component = host_component_.lock();
         measure_cache_.resize(component->children_count());

@@ -29,6 +29,10 @@ namespace kernal {
         // note: this is call by html attribution 'id'
         void internal_attr_set_id(const char* str);
 
+    public:
+        // note: css attributes fast access
+        int32_t css_z_index() const;
+
     protected:
         // note: css style
         hal_css_t css_;

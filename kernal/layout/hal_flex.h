@@ -22,7 +22,7 @@ namespace kernal {
 
     public:
         // note: layout children
-        bool layout(const hal_rect&);
+        bool layout(const hal_rect&, const hal_point&, const hal_rect&);
 
     private:
         // note: layout children
@@ -41,6 +41,9 @@ namespace kernal {
 
     protected:
         std::vector<hal_flex_layout_size> measure_cache_;
+
+    protected:
+        hal_point document_relative_point_; hal_rect current_visible_rect;
     };
 }
 #endif//Halberd_Kernal_Layout_Hal_Flex_H_

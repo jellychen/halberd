@@ -36,9 +36,13 @@ void hal_component_attributes::internal_attr_set_id(const char* str) {
         host_document_.lock()->id_index_.remove(doc_id_);
     }
     doc_id_ = str;
-    
+
     auto component = std::dynamic_pointer_cast<hal_component_base>(shared_from_this());
     if (!host_document_.expired() && !doc_id_.empty()) {
         host_document_.lock()->id_index_.add(doc_id_, component);
     }
+}
+
+int32_t hal_component_attributes::css_z_index() const {
+    return css_.z_index_;
 }

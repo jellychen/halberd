@@ -71,10 +71,16 @@ public:
 
 int main()
 {
+
+
+
     {
+        hal_document_area_index index;
+
         hal_current_time timer__;
 
-        std::shared_ptr<hal_component> component(new hal_component());
+        /*
+        std::shared_ptr<hal_component_base> component(new hal_component_base());
         hal_document_area_index index;
         for (int i = 0; i < 50000000000; ++i) {
             if (0 == (i % 10000)) {
@@ -83,7 +89,12 @@ int main()
             hal_rect rect = hal_rect_make(i, i, 20000, 20000);
             index.add(rect, component);
         }
+        */
 
+        std::shared_ptr<hal_component_render> s(new hal_component_render());
+        for (int i = 0; i < 50000; ++i) {
+            auto ss = std::dynamic_pointer_cast<hal_component_base>(s);
+        }
         printf("%lld  %d\n", timer__.elapsed(), index.count());
     }
     return 0;

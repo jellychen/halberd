@@ -18,6 +18,9 @@ namespace kernal {
         // note: called
         void render(std::shared_ptr<hal_render_command_context>&);
 
+        // note: called
+        void mark_need_render();
+        
     protected:
         // note: render function
         virtual void paint(std::shared_ptr<hal_render_command_context>&);
@@ -25,8 +28,16 @@ namespace kernal {
         // note: when need rerender call this function
         virtual void invalidate_render();
 
+    private:
+        // note: mark need render
+        void mark_parent_hava_children_need_render();
+
     protected:
+        // note: is self need render
         bool is_need_render = true;
+
+        // note: is have children need render
+        bool is_have_child_need_render = true;
     };
 }
 #endif//Halberd_Kernal_Component_Hal_Component_Render_H_
