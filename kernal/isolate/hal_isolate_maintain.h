@@ -21,9 +21,6 @@ namespace kernal {
     public:
         void post(std::function<void(hal_isolate_maintain*)>&);
 
-    public:
-        void internal_thread_main();
-
     private:
         std::thread thread_;
         std::atomic_bool should_exit_ = {false};

@@ -27,6 +27,9 @@ namespace kernal {
         void capture_to_file(const char* file);
 
     public:
+        // resize
+        bool resize(const hal_size& size);
+
         // erase with color
         bool erase(const hal_color& clr);
 

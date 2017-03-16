@@ -12,7 +12,9 @@ hal_isolate_maintain::hal_isolate_maintain(
 
     // note: create thread;
     thread_ = std::thread([this] {
-        this->internal_thread_main();
+        while (false == should_exit_) {
+            task_queue_->wait_and_run_runable(this);
+        }
     });
 
     //std::chrono::milliseconds timespan(50); // or whatever
@@ -42,10 +44,4 @@ bool hal_isolate_maintain::load_from_file(const char* name) {
 void hal_isolate_maintain::post(
     std::function<void(hal_isolate_maintain*)>& runable) {
     task_queue_->post(runable);
-}
-
-void hal_isolate_maintain::internal_thread_main() {
-    while (false == should_exit_) {
-        task_queue_->wait_and_run_runable(this);
-    }
 }

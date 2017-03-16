@@ -16,6 +16,14 @@ void hal_render_context_base::capture_to_file(const char* file) {
     }
 }
 
+bool hal_render_context_base::resize(const hal_size& size) {
+    if (canvas_) {
+        canvas_->resize(size);
+        return true;
+    }
+    return false;
+}
+
 bool hal_render_context_base::erase(const hal_color& clr) {
     auto canvas = hal_render_context_base::raw_unsafe_canvas();
     if (nullptr == canvas) {

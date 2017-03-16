@@ -12,14 +12,32 @@ hal_isolate::~hal_isolate() {
 }
 
 bool hal_isolate::init() {
+    // note: create canvas
+    auto render_canvas_size = hal_size_make(200, 200);
+    render_canvas_
+        = hal_creator<hal_render_mem_canvas>::instance(render_canvas_size);
+    if (!render_canvas_) return false;
+
+    // note: create context
+    
+    render_context_
+        = hal_creator<hal_render_context>::instance(render_canvas_);
+    if (!render_context_) return false;
+
     // note: create render command buffer
     render_command_buffer_
         = hal_creator<hal_render_command_buffer>::instance(true);
     if (!render_command_buffer_) return false;
 
-    // nore: create maintain
+    // note: create maintain
     isolate_maintain_
         = hal_creator<hal_isolate_maintain>::instance(render_command_buffer_);
+    if (!isolate_maintain_) return false;
+
+    // note: create raster thread
+    raster_thread_
+        = hal_creator<hal_render_raster_thread>::instance(
+        render_context_, render_command_buffer_);
     if (!isolate_maintain_) return false;
 
     return true;

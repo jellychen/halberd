@@ -16,9 +16,6 @@ namespace kernal {
     public:
         bool stop_and_wait();
 
-    public:
-        void internal_thread_main();
-
     private:
         std::thread thread_;
         std::atomic_bool should_exit_ = {false};

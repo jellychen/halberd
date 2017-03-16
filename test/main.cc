@@ -72,30 +72,26 @@ public:
 int main()
 {
 
+    hal_isolate isolate_; isolate_.init();
+    int data = 0; std::cin >> data; return 0;
+
+
 
 
     {
-        hal_document_area_index index;
+        auto root = std::shared_ptr<hal_component_render>(new hal_component_render());
+        for (int i = 0; i < 100000; ++i) {
+            auto render = std::shared_ptr<hal_component_render>(new hal_component_render());
+            auto ele = std::dynamic_pointer_cast<hal_element>(render);
+            root->append_child(ele);
+        }
 
         hal_current_time timer__;
-
-        /*
-        std::shared_ptr<hal_component_base> component(new hal_component_base());
-        hal_document_area_index index;
-        for (int i = 0; i < 50000000000; ++i) {
-            if (0 == (i % 10000)) {
-                printf("%d\n", i);
-            }
-            hal_rect rect = hal_rect_make(i, i, 20000, 20000);
-            index.add(rect, component);
+        for (uint32_t i = 0; i < 100000; ++i) {
+            auto ele = root->at(i);
+            auto render = std::dynamic_pointer_cast<hal_component_render>(ele);
         }
-        */
-
-        std::shared_ptr<hal_component_render> s(new hal_component_render());
-        for (int i = 0; i < 50000; ++i) {
-            auto ss = std::dynamic_pointer_cast<hal_component_base>(s);
-        }
-        printf("%lld  %d\n", timer__.elapsed(), index.count());
+        printf("%lld  %d\n", timer__.elapsed(), 0);
     }
     return 0;
 

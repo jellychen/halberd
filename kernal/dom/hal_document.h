@@ -23,11 +23,24 @@ namespace kernal {
         std::shared_ptr<hal_render_command_buffer> command_buffer();
 
     public:
-        hal_document_id_index id_index_;
-        hal_document_area_index area_index_;
+        // note: layout document
+        bool layout(hal_size& size);
 
     public:
+        // note: resize canvas
+        bool resize_view_size(hal_size& size);
+
+    public:
+        // note: id index pool
+        hal_document_id_index id_index_;
+
+        // note: rtree index pool
+        hal_document_area_index area_index_;
+
+        // note: document head
         std::shared_ptr<hal_document_head> doc_head_;
+
+        // note: docuemnt content
         std::shared_ptr<hal_document_content> doc_content_;
 
     private:
