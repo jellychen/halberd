@@ -31,6 +31,10 @@ namespace kernal {
         bool resize_view_size(hal_size& size);
 
     public:
+        // note: capture current canvas
+        bool capture_canvas_to_file(const char* name);
+
+    public:
         // note: id index pool
         hal_document_id_index id_index_;
 

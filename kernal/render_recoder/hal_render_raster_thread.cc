@@ -5,7 +5,8 @@ hal_render_raster_thread::hal_render_raster_thread(
     std::shared_ptr<hal_render_context>& render_context,
     std::shared_ptr<hal_render_command_buffer>& command_buffer)
     :render_context_(render_context), command_buffer_(command_buffer) {
-    thread_ = std::thread([this]{
+    thread_ = std::thread([this] {
+        printf("%s\n", "hal_render_raster_thread::hal_render_raster_thread");
         while (false == should_exit_ && command_buffer_ && render_context_) {
             command_buffer_->run_in_thread(render_context_);
         }

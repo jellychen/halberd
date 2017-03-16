@@ -50,7 +50,7 @@ void hal_render_mem_canvas::capture_to_file(const char* file) {
     if (nullptr == file || nullptr == mem_buffer_) {
         return;
     }
-
+    
     sk_sp<SkImage> texture;
     uint32_t buffer_size = size_.width_ * size_.height_;
     sk_sp<SkData> data = SkData::MakeWithCopy(

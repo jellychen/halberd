@@ -17,11 +17,19 @@ namespace kernal {
         bool init();
 
     public:
+        // note: resize document view port
+        bool resize_view(hal_size& size);
+
+    public:
         // note: load from network
         bool load_url(const char* url);
 
         // note: load from file system
         bool load_from_file(const char* name);
+
+    public:
+        // note: capture canvas file
+        bool capture_canvas_to_file(const char* name, bool current = false);
 
     private:
         // note: render canvas context

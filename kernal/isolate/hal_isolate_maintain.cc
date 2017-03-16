@@ -4,21 +4,23 @@ using namespace kernal;
 hal_isolate_maintain::hal_isolate_maintain(
     std::shared_ptr<hal_render_command_buffer>& command_buffer)
     : command_buffer_(command_buffer) {
+
     // note: task queue
     task_queue_ = hal_creator<hal_isolate_task_queue>::instance();
     auto handler = std::dynamic_pointer_cast<hal_isolate_handler>(task_queue_);
     std::weak_ptr<hal_isolate_handler> weak_handler(handler);
     hal_singleton<hal_isolate_handler_fetcher>::share().attach(weak_handler);
 
+    // note: create
+    document_ = hal_creator<hal_document>::instance(command_buffer_);
+
     // note: create thread;
     thread_ = std::thread([this] {
+        printf("%s\n", "hal_render_raster_thread::hal_render_raster_thread");
         while (false == should_exit_) {
             task_queue_->wait_and_run_runable(this);
         }
     });
-
-    //std::chrono::milliseconds timespan(50); // or whatever
-    //std::this_thread::sleep_for(timespan);
 }
 
 hal_isolate_maintain::~hal_isolate_maintain() {
@@ -41,7 +43,21 @@ bool hal_isolate_maintain::load_from_file(const char* name) {
     return true;
 }
 
+bool hal_isolate_maintain::resize_document_view_size(hal_size& size) {
+    if (document_) {
+        return document_->resize_view_size(size);
+    }
+    return false;
+}
+
+bool hal_isolate_maintain::capture_canvas_to_file(const char* name) {
+    if (document_) {
+        return document_->capture_canvas_to_file(name);
+    }
+    return false;
+}
+
 void hal_isolate_maintain::post(
-    std::function<void(hal_isolate_maintain*)>& runable) {
+    std::function<void(hal_isolate_maintain*)> runable) {
     task_queue_->post(runable);
 }

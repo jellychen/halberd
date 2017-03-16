@@ -10,7 +10,7 @@ using namespace std;
 #include <kernal/render_al/text/hal_render_text_attr.h>
 #include <kernal/thread/hal_thread_instance.h>
 #include <kernal/render_recoder/hal_render_recoder_inct.h>
-#include <kernal/isolate/hal_isolate.h>
+#include <kernal/isolate/hal_isolate_bundle.h>
 #include <kernal/utils/hal_current_time.h>
 
 #include <kernal/dom/hal_document_area_index.h>
@@ -71,8 +71,17 @@ public:
 
 int main()
 {
+    //std::chrono::milliseconds timespan(50); // or whatever
+    //std::this_thread::sleep_for(timespan);
 
-    hal_isolate isolate_; isolate_.init();
+
+    hal_isolate_bundle isolate_;
+
+    hal_size size = hal_size_make(100, 100);
+    isolate_.resize_view(size);
+    
+    isolate_.capture_canvas_to_file("3.png");
+
     int data = 0; std::cin >> data; return 0;
 
 

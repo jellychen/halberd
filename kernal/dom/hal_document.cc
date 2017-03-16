@@ -34,3 +34,18 @@ bool hal_document::resize_view_size(hal_size& size) {
     }
     return true;
 }
+
+// note: capture current canvas
+bool hal_document::capture_canvas_to_file(const char* name) {
+    if (nullptr == name || !command_buffer_) {
+        return false;
+    }
+
+    std::string std_name_str(name);
+    std::function<void(std::shared_ptr<hal_render_context>&)> runable
+        = [std_name_str] (std::shared_ptr<hal_render_context>& context) {
+        if (context) context->capture_to_file(std_name_str.c_str());
+    };
+    std_name_str = ""; command_buffer_->commit(runable);
+    return true;
+}
