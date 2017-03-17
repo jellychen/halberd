@@ -12,17 +12,17 @@ std::shared_ptr<hal_render_command_buffer>
 
 void hal_component_render::render(
     std::shared_ptr<hal_render_command_context>& context) {
+    // note: save state
+    context->save_state();
+
+    // note: clip cnavas
+
+    // note: render
     if (context && is_need_render) {
-        context->save_state();
-
-        // note: clip canvas
-
         // note: render background
         render(context);
 
         // note: render outline
-
-        context->restore_state();
     }
     is_need_render = false;
 
@@ -33,7 +33,8 @@ void hal_component_render::render(
             std::shared_ptr<hal_element>& ele = children_[index];
             auto renderable = std::dynamic_pointer_cast<hal_component_render>(ele);
             if (renderable) {
-                if (renderable->is_need_render && renderable->is_have_child_need_render) {
+                if (renderable->is_need_render
+                    && renderable->is_have_child_need_render) {
                     need_render_children.push_back(renderable);
                 }
             }
@@ -52,6 +53,9 @@ void hal_component_render::render(
         }
     }
     is_have_child_need_render = false;
+
+    // note: restore state
+    context->restore_state();
 }
 
 void hal_component_render::mark_need_render() {
@@ -68,6 +72,7 @@ void hal_component_render::paint(
 void hal_component_render::invalidate_render() {
     // note: mark
     mark_need_render();
+
     // note: area crash
     if (!host_document_.expired()) {
         host_document_.lock()

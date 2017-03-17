@@ -18,6 +18,7 @@ namespace kernal {
     public:
         bool load_url(const char* url);
         bool load_from_file(const char* name);
+        bool load_buffer_data(const char* buffer, uint32_t len);
 
     public:
         // note: resize
@@ -25,7 +26,7 @@ namespace kernal {
 
         // note: capture current canvas
         bool capture_canvas_to_file(const char* name);
-        
+
     public:
         void post(std::function<void(hal_isolate_maintain*)>);
 

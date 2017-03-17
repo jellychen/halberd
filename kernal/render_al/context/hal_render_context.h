@@ -2,6 +2,7 @@
 #define Halberd_Kernal_Render_Al_Context_Hal_Render_Context_H_
 
 #include "hal_render_context_path.h"
+#include "render_al/transform/hal_render_matrix.h"
 
 namespace kernal {
     class hal_render_context
@@ -19,6 +20,9 @@ namespace kernal {
     public:
         bool camera_rotate(float x, float y, float z);
         bool camera_translate(float x, float y, float z);
+
+    public:
+        bool concat_martix(hal_render_matrix& matrix);
 
     public:
         bool save_state();

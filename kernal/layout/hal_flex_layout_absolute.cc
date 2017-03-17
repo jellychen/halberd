@@ -2,6 +2,6 @@
 using namespace kernal;
 
 bool hal_flex::layout_absolute(
-    std::shared_ptr<hal_component_layout>& component, const hal_rect& rect) {
+    const hal_flex_layout_param& param, std::shared_ptr<hal_component_layout>& component) {
     return true;
 }

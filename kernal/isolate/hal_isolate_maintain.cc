@@ -16,7 +16,6 @@ hal_isolate_maintain::hal_isolate_maintain(
 
     // note: create thread;
     thread_ = std::thread([this] {
-        printf("%s\n", "hal_render_raster_thread::hal_render_raster_thread");
         while (false == should_exit_) {
             task_queue_->wait_and_run_runable(this);
         }
@@ -40,6 +39,10 @@ bool hal_isolate_maintain::load_from_file(const char* name) {
     if (nullptr == name) {
         return false;
     }
+    return true;
+}
+
+bool hal_isolate_maintain::load_buffer_data(const char* buffer, uint32_t len) {
     return true;
 }
 

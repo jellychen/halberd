@@ -8,6 +8,7 @@
 
 namespace kernal {
     class hal_component_layout : public hal_component_attributes {
+    friend class hal_flex;
     public:
         using hal_component_attributes::hal_component_attributes;
 

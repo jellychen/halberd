@@ -14,7 +14,7 @@ hal_size hal_component_layout::measure_size(
 }
 
 void hal_component_layout::layout_children(const hal_rect& vrect) {
-    flex_layout_.layout(rect_, document_relative_rect_, vrect);
+    //flex_layout_.layout(rect_, document_relative_rect_, vrect);
 }
 
 hal_rect hal_component_layout::rect() const {

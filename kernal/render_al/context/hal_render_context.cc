@@ -67,6 +67,16 @@ bool hal_render_context::camera_translate(float x, float y, float z) {
     return true;
 }
 
+bool hal_render_context::concat_martix(hal_render_matrix& matrix) {
+    auto canvas = hal_render_context_base::raw_unsafe_canvas();
+    if (nullptr == canvas) {
+        return false;
+    }
+    
+    canvas->concat(matrix.raw_matrix_);
+    return true;
+}
+
 bool hal_render_context::save_state() {
     auto canvas = hal_render_context_base::raw_unsafe_canvas();
     if (nullptr == canvas) {
