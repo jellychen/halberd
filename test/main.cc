@@ -38,14 +38,14 @@ public:
     }
 };
 
+
 class a {
 public:
 
-
     a(){
-        //printf("%s\n", "a");
+        printf("%s\n", "a");
     }
-/*
+
     a(const a&) {
         printf("%s\n", "c a");
     }
@@ -66,8 +66,31 @@ public:
     a& operator=(const a&&) {
         printf("%s\n", "a operator==");
         return *this;
-    }*/
+    }
 };
+
+std::function<void()> data(a& d) {
+    return [d]() {
+    };
+}
+
+int ttt() {
+    const GrGLInterface* interface = nullptr;
+    GrContext* context = GrContext::Create(kOpenGL_GrBackend, (GrBackendContext)interface);
+    SkImageInfo info = SkImageInfo::MakeN32Premul(400,300);
+    sk_sp<SkSurface> surface = SkSurface::MakeRenderTarget(context, SkBudgeted::kNo, info);
+    SkCanvas* canvas = surface->getCanvas();
+
+    canvas->clear(SK_ColorWHITE);
+    canvas->flush();
+    context->flush();
+    sk_sp<SkImage> image = surface->makeImageSnapshot();
+    GrBackendObject handle = image->getTextureHandle(true);
+    SkImage* rawImage = image.release();
+    surface.release();
+
+    return 0;
+}
 
 int main()
 {
@@ -75,11 +98,12 @@ int main()
     //std::this_thread::sleep_for(timespan);
 
 
+/*
     hal_isolate_bundle isolate_;
 
     hal_size size = hal_size_make(100, 100);
     isolate_.resize_view(size);
-    
+
     isolate_.capture_canvas_to_file("3.png");
 
     int data = 0; std::cin >> data; return 0;
@@ -114,7 +138,7 @@ int main()
     hal_file_read::read_whole("/test/2.txt", utf8_data);
 
 
-
+*/
 
     //return 0;
 
@@ -139,19 +163,14 @@ int main()
 */
 
 
-
-    std::shared_ptr<hal_render_surface_canvas> surface_canvas
-        = hal_creator<hal_render_surface_canvas>::instance(hal_size_make(1080, 1920));
-    auto base_canvas1 = std::dynamic_pointer_cast<hal_render_canvas>(surface_canvas);
-
-    std::shared_ptr<hal_render_mem_canvas> mem_canvas
-        = hal_creator<hal_render_mem_canvas>::instance(hal_size_make(1080, 1920));
-    auto base_canvas2 = std::dynamic_pointer_cast<hal_render_canvas>(mem_canvas);
+    std::shared_ptr<hal_render_mem_canvas> canvas
+        = hal_creator<hal_render_mem_canvas>::instance(hal_size_make(400, 400));
+    auto base_canvas2 = std::dynamic_pointer_cast<hal_render_canvas>(canvas);
 
     std::shared_ptr<hal_render_context> context
         = hal_creator<hal_render_context>::instance(base_canvas2);
 
-hal_current_time timer__;
+
 
     context->erase(hal_color_make(255,255,255,255));
 
@@ -159,12 +178,30 @@ hal_current_time timer__;
     auto r_buffer = hal_creator<hal_render_command_buffer>::instance(false);
 
     {
-
-
-
         auto c_context = hal_creator<hal_render_command_context>::instance(r_buffer);
-        c_context->draw_round_rect(hal_rect_make(10, 10, 200, 200), 30, 30, 5, hal_color_make(255,0,0,255), 1);
+        c_context->fill_oval(hal_rect_make(190, 190, 20, 20), hal_color_make(0,0,0,255), 1);
 
+
+        hal_render_matrix matrix;
+
+        matrix.set_translate(200, 200);
+        matrix.pre_rotate(45);
+        //matrix.pre_scale(1.5, 1.5);
+        matrix.pre_translate(-200, -200);
+
+        hal_rect rect = hal_rect_make(150, 150, 100, 100);
+        matrix.map_rect(rect, rect);
+        c_context->fill_rect(rect, hal_color_make(0,0,0,255), 1);
+        c_context->concat_martix(matrix);
+
+
+        c_context->draw_round_rect(hal_rect_make(150, 150, 100, 100), 0, 0, 1, hal_color_make(255,0,0,255), 1);
+
+        auto c_texture = hal_creator<hal_render_command_texture>::instance(r_buffer);
+        c_texture->load_file("/test/1.jpg");
+        c_texture->draw(200, true, hal_rect_make(0, 0, 300, 300), hal_rect_make(150, 150, 100, 100));
+
+/*
         c_context->save_state();
         c_context->clip_intersect(hal_rect_make(10, 10, 150, 150), 1);
 
@@ -177,9 +214,7 @@ hal_current_time timer__;
         c_context->clear_path();
         c_context->restore_state();
 
-        auto c_texture = hal_creator<hal_render_command_texture>::instance(r_buffer);
-        c_texture->load_file("/test/1.jpg");
-        c_texture->draw(200, true, 0, 0);
+
 
 
         auto c_text = hal_creator<hal_render_command_text>::instance(r_buffer);
@@ -187,12 +222,11 @@ hal_current_time timer__;
         c_text->text_attr_.aa_ = 1;
         c_text->draw_oneline("guodong", 7, hal_point_make(10, 10), hal_color_make(0,0,0,255), 200);
         c_text->draw_multiLine(utf8_data.c_str(), utf8_data.size(), hal_rect_make(0,0, 100, 100), 4, hal_point_make(0, 0), hal_color_make(0,0,0,255), 255);
-
+*/
     }
 
-
+hal_current_time timer__;
     r_buffer->run(context);
-
 printf("%lld\n", timer__.elapsed());
 
 /*

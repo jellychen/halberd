@@ -23,13 +23,13 @@ namespace kernal {
         void clear_path();
 
         // path render
-        void move_to(const hal_point pt);
-        void line_to(const hal_point pt);
-        void quad_to(const hal_point pt0, const hal_point pt1);
-        void cubi_to(const hal_point pt0, const hal_point pt1, const hal_point pt2);
-        bool fill_path(const hal_color clr, bool aa);
-        bool stroke_path(const hal_color clr, bool width, bool aa);
-        bool stroke_fill_path(const hal_color clr, bool width, bool aa);
+        void move_to(const hal_point& pt);
+        void line_to(const hal_point& pt);
+        void quad_to(const hal_point& pt0, const hal_point& pt1);
+        void cubi_to(const hal_point& pt0, const hal_point& pt1, const hal_point& pt2);
+        bool fill_path(const hal_color& clr, bool aa);
+        bool stroke_path(const hal_color& clr, bool width, bool aa);
+        bool stroke_fill_path(const hal_color& clr, bool width, bool aa);
 
         // path clip
         bool clip_path_union(bool aa);

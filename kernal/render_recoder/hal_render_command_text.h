@@ -31,12 +31,12 @@ namespace kernal {
 
         // note: draw one line
         bool draw_oneline(const char* text, size_t len,
-            hal_point loc, hal_color clr, uint8_t alpha);
+            hal_point& loc, hal_color& clr, uint8_t alpha);
 
         // note: draw multiLine
         bool draw_multiLine(const char* text,
-            size_t len, hal_rect rect, float line_s,
-            hal_point loc, hal_color clr, uint8_t alpha);
+            size_t len, hal_rect& rect, float line_s,
+            hal_point& loc, hal_color& clr, uint8_t alpha);
 
     public:
         hal_render_text_attr text_attr_;

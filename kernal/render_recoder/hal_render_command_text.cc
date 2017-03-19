@@ -39,8 +39,8 @@ bool hal_render_command_text::measure_size(
 }
 
 bool hal_render_command_text::draw_oneline(
-    const char* text, size_t len, hal_point loc,
-    hal_color clr, uint8_t alpha) {
+    const char* text, size_t len, hal_point& loc,
+    hal_color& clr, uint8_t alpha) {
     if (nullptr != text && 0 < len && command_buffer_) {
 
         // note: use for block capture
@@ -87,8 +87,8 @@ bool hal_render_command_text::draw_oneline(
 }
 
 bool hal_render_command_text::draw_multiLine(
-    const char* text, size_t len, hal_rect rect, float line_s,
-    hal_point loc, hal_color clr, uint8_t alpha) {
+    const char* text, size_t len, hal_rect& rect, float line_s,
+    hal_point& loc, hal_color& clr, uint8_t alpha) {
     if (nullptr != text && 0 < len && command_buffer_) {
 
         // note: use for block capture

@@ -38,7 +38,7 @@ void hal_render_command_path::clear_path() {
     }
 }
 
-void hal_render_command_path::move_to(const hal_point pt) {
+void hal_render_command_path::move_to(const hal_point& pt) {
     if (_parent::command_buffer_) {
         hal_render_command command = [pt](
             std::shared_ptr<hal_render_context>& context) {
@@ -50,7 +50,7 @@ void hal_render_command_path::move_to(const hal_point pt) {
     }
 }
 
-void hal_render_command_path::line_to(const hal_point pt) {
+void hal_render_command_path::line_to(const hal_point& pt) {
     if (_parent::command_buffer_) {
         hal_render_command command = [pt](
             std::shared_ptr<hal_render_context>& context) {
@@ -63,7 +63,7 @@ void hal_render_command_path::line_to(const hal_point pt) {
 }
 
 void hal_render_command_path::quad_to(
-    const hal_point pt0, const hal_point pt1) {
+    const hal_point& pt0, const hal_point& pt1) {
     if (_parent::command_buffer_) {
         hal_render_command command = [=](
             std::shared_ptr<hal_render_context>& context) {
@@ -76,7 +76,7 @@ void hal_render_command_path::quad_to(
 }
 
 void hal_render_command_path::cubi_to(
-    const hal_point pt0, const hal_point pt1, const hal_point pt2) {
+    const hal_point& pt0, const hal_point& pt1, const hal_point& pt2) {
     if (_parent::command_buffer_) {
         hal_render_command command = [=](
             std::shared_ptr<hal_render_context>& context) {
@@ -88,7 +88,7 @@ void hal_render_command_path::cubi_to(
     }
 }
 
-bool hal_render_command_path::fill_path(const hal_color clr, bool aa) {
+bool hal_render_command_path::fill_path(const hal_color& clr, bool aa) {
     if (_parent::command_buffer_) {
         hal_render_command command = [=](
             std::shared_ptr<hal_render_context>& context) {
@@ -102,7 +102,7 @@ bool hal_render_command_path::fill_path(const hal_color clr, bool aa) {
 }
 
 bool hal_render_command_path::stroke_path(
-    const hal_color clr, bool width, bool aa) {
+    const hal_color& clr, bool width, bool aa) {
     if (_parent::command_buffer_) {
         hal_render_command command = [=](
             std::shared_ptr<hal_render_context>& context) {
@@ -116,7 +116,7 @@ bool hal_render_command_path::stroke_path(
 }
 
 bool hal_render_command_path::stroke_fill_path(
-    const hal_color clr, bool width, bool aa) {
+    const hal_color& clr, bool width, bool aa) {
     if (_parent::command_buffer_) {
         hal_render_command command = [=](
             std::shared_ptr<hal_render_context>& context) {

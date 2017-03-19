@@ -19,6 +19,10 @@
 #include "SkCamera.h"
 #include "SkTypeface.h"
 
+// gl
+#include "GrContext.h"
+#include "gl/GrGLInterface.h"
+
 // type
 #include "utils/hal_t_define.h"
 
@@ -26,8 +30,8 @@ namespace kernal {
 
     inline SkRect __convert_to_t(const hal_rect& rect) {
         float x = rect.x_, y = rect.y_;
-        float w = rect.width_, h = rect.height_;
-        SkRect _rect; _rect.set(x, y, w, h); return _rect;
+        float r = x +  rect.width_, b = y + rect.height_;
+        SkRect _rect; _rect.set(x, y, r, b); return _rect;
     }
 
     inline SkPoint __convert_to_t(const hal_point& point) {

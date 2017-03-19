@@ -23,6 +23,7 @@ namespace kernal {
         bool translate(float x, float y);
         bool camera_rotate(float x, float y, float z);
         bool camera_translate(float x, float y, float z);
+        bool concat_martix(hal_render_matrix& matrix);
     };
 }
 #endif//Halberd_Kernal_Render_Recoder_Hal_Render_Command_Context_H_

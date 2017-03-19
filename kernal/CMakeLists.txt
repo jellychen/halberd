@@ -65,6 +65,7 @@ Set(CMAKE_CXX_FLAGS "-O2 -pipe -fPIC -Wall -fmessage-length=0 -fpermissive ${CMA
 Add_Library(webkernal STATIC ${srcs})
 
 Target_Link_Libraries(webkernal pthread gumbo katana skia)
+Target_Link_Libraries(webkernal "-framework OpenGL")
 Target_Link_Libraries(webkernal "-framework Foundation")
 Target_Link_Libraries(webkernal "-framework CoreGraphics")
 Target_Link_Libraries(webkernal "-framework QuartzCore")

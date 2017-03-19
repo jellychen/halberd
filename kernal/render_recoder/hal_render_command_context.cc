@@ -104,3 +104,16 @@ bool hal_render_command_context::camera_translate(float x, float y, float z) {
     }
     return true;
 }
+
+bool hal_render_command_context::concat_martix(hal_render_matrix& matrix) {
+    if (command_buffer_) {
+        hal_render_command command = [matrix] (
+            std::shared_ptr<hal_render_context>& context) mutable {
+            if (context) {
+                context->concat_martix(matrix);
+            }
+        };
+        command_buffer_->commit(command);
+    }
+    return true;
+}

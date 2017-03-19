@@ -31,9 +31,9 @@ namespace kernal {
         void post_translate(float x, float y);
 
     public:
-        // note: contact
-        void pre_contact(hal_render_matrix& matrix);
-        void post_contact(hal_render_matrix& matrix);
+        // note: conact
+        void pre_concat(hal_render_matrix& matrix);
+        void post_concat(hal_render_matrix& matrix);
 
     public:
         // note: camera rotate
@@ -45,6 +45,13 @@ namespace kernal {
         void set_camera_translate(float x, float y, float z);
         void pre_camera_translate(float x, float y, float z);
         void post_camera_translate(float x, float y, float z);
+
+    public:
+        // note: map point
+        void map_point(hal_point& src, hal_point& dst);
+
+        // note: map rect
+        void map_rect(hal_rect& src, hal_rect& dst);
 
     public:
         SkMatrix raw_matrix_;

@@ -48,12 +48,12 @@ void hal_render_matrix::post_translate(float x, float y) {
     raw_matrix_.postTranslate(x, y);
 }
 
-void hal_render_matrix::pre_contact(hal_render_matrix& matrix) {
-    raw_matrix_.preContact(matrix.raw_matrix_);
+void hal_render_matrix::pre_concat(hal_render_matrix& matrix) {
+    raw_matrix_.preConcat(matrix.raw_matrix_);
 }
 
-void hal_render_matrix::post_contact(hal_render_matrix& matrix) {
-    raw_matrix_.postContact(matrix.raw_matrix_);
+void hal_render_matrix::post_concat(hal_render_matrix& matrix) {
+    raw_matrix_.postConcat(matrix.raw_matrix_);
 }
 
 void hal_render_matrix::set_camera_rotate(float x, float y, float z) {
@@ -72,7 +72,7 @@ void hal_render_matrix::pre_camera_rotate(float x, float y, float z) {
 
     SkMatrix _3d_martix;
     _3d_view.getMatrix(&_3d_martix);
-    raw_matrix_.preContact(_3d_martix);
+    raw_matrix_.preConcat(_3d_martix);
 }
 
 void hal_render_matrix::post_camera_rotate(float x, float y, float z) {
@@ -83,7 +83,7 @@ void hal_render_matrix::post_camera_rotate(float x, float y, float z) {
 
     SkMatrix _3d_martix;
     _3d_view.getMatrix(&_3d_martix);
-    raw_matrix_.postContact(_3d_martix);
+    raw_matrix_.postConcat(_3d_martix);
 }
 
 void hal_render_matrix::set_camera_translate(float x, float y, float z) {
@@ -97,7 +97,7 @@ void hal_render_matrix::pre_camera_translate(float x, float y, float z) {
     _3d_view.translate(x, y, z);
     SkMatrix _3d_martix;
     _3d_view.getMatrix(&_3d_martix);
-    raw_matrix_.preContact(_3d_martix);
+    raw_matrix_.preConcat(_3d_martix);
 }
 
 void hal_render_matrix::post_camera_translate(float x, float y, float z) {
@@ -105,5 +105,17 @@ void hal_render_matrix::post_camera_translate(float x, float y, float z) {
     _3d_view.translate(x, y, z);
     SkMatrix _3d_martix;
     _3d_view.getMatrix(&_3d_martix);
-    raw_matrix_.postContact(_3d_martix);
+    raw_matrix_.postConcat(_3d_martix);
+}
+
+void hal_render_matrix::map_point(hal_point& src, hal_point& dst) {
+    SkPoint ret = raw_matrix_.mapXY(src.x_, src.y_);
+    dst.x_ = ret.x(); dst.y_ = ret.y();
+}
+
+void hal_render_matrix::map_rect(hal_rect& src, hal_rect& dst) {
+    SkRect ret_r;
+    raw_matrix_.mapRect(&ret_r, __convert_to_t(src));
+    dst.x_ = ret_r.x(); dst.y_ = ret_r.y();
+    dst.width_ = ret_r.width(); dst.height_ = ret_r.height();
 }
